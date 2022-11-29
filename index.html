@@ -4,17 +4,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="js/script.js"></script>
     <link rel="stylesheet" href="css/styles.css">
-    <title>Document</title>
+    <title>Main Page</title>
 </head>
 <body>
-    {{ template "main" }}
-
     <div>
-        <form method="POST">
-            <label for="name">Name:</label>
-            <input id="name" type="text" name="name" placeholder="Your name here">
-        </form>
+        <a href="/hangman"><div class="btn">{{ if eq .FinalWord ""}}Play{{else}}Resume{{end}}</div></a>
+        {{ if ne .FinalWord ""}}<div id="reset-btn" class="btn" onclick="resetGame()">Reset Game</div>{{end}}
     </div>
 </body>
 </html>

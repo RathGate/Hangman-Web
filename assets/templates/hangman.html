@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script scr="js/script.js"></script>
+    <title>Main Page</title>
+</head>
+<body>
+    <a href="/"><div class="btn">Back</div></a>
+    <div>
+        <div>{{ .Word }}</div>
+        <div> {{ .UsedLetters }}</div>
+        <div>{{ .Attempts }} </div>
+    </div>
+    <div>
+        {{ if and (ne .FinalWord .Word) (ne .Attempts 0) }}
+        <form method="POST">
+            <label for="name">Name:</label>
+            <input id="name" type="text" name="name" placeholder="Your name here">
+        </form>
+        {{ end }}
+    </div>
+</body>
+</html>

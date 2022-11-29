@@ -2,26 +2,40 @@ package main
 
 import (
 	"fmt"
+	"hangman-web/packages/hangman"
 	"log"
 	"net/http"
 	"text/template"
 )
 
+var data hangman.HangManData
+
 func main() {
 	// Handles css files:
-	static := http.FileServer(http.Dir("assets/css"))
-	http.Handle("/css/", http.StripPrefix("/css/", static))
+	cssHandler := http.FileServer(http.Dir("assets/css"))
+	http.Handle("/css/", http.StripPrefix("/css/", cssHandler))
+	jsHandler := http.FileServer(http.Dir("assets/js"))
+	http.Handle("/js/", http.StripPrefix("/js/", jsHandler))
 
 	// Handles default route:
-	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		template := template.Must(template.ParseFiles("index.html"))
-		if r.Method == http.MethodPost {
-			main_templ, _ := template.New("main").Parse(r.FormValue("name"))
-			template.Execute(w, main_templ)
-		} else {
-			main_templ, _ := template.New("main").Parse("Bonjour !")
-			template.Execute(w, main_templ)
+	http.HandleFunc("/hangman", func(w http.ResponseWriter, r *http.Request) {
+		if data.FinalWord == "" {
+			data.InitGame("words.txt")
 		}
+		template := template.Must(template.ParseFiles("assets/templates/hangman.html"))
+		if r.Method == http.MethodPost {
+			data.RoundResult(r.FormValue("name"))
+		}
+		template.Execute(w, data)
+	})
+
+	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		if r.Method == http.MethodPost {
+			fmt.Println(r.FormValue("reset"))
+			data = hangman.HangManData{}
+		}
+		template := template.Must(template.ParseFiles("index.html"))
+		template.Execute(w, data)
 	})
 
 	// Launches the server:

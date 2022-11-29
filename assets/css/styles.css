@@ -2,6 +2,11 @@
     box-sizing: border-box;
 }
 
+a {
+    color: #ececec;
+    text-decoration: none;
+}
+
 html, main {
     height: 100%;
     width: 100%;
