@@ -10,19 +10,26 @@
     <title>Main Page</title>
 </head>
 <body>
-    <a href="/"><div class="btn">Back</div></a>
-    <div>
-        <div>{{ .Word }}</div>
-        <div> {{ .UsedLetters }}</div>
-        <div>{{ .Attempts }} </div>
+    <div class="game-info">
+        <div class="to-find">{{ .Word }}</div>
+        <div><span class="small-title">USED LETTERS:</span> {{ .UsedToString }}</div>
+        <div><span class="small-title">ATTEMPTS LEFT:</span> {{ .Attempts }}</div>
+
+        <div class="game-form">
+            {{ if and (ne .FinalWord .Word) (ne .Attempts 0) }}
+            <form method="POST">
+                <input id="name" type="text" name="name" placeholder="Suggest something !" autofocus>
+                <input class="hidden" id="submit-btn" class="btn" type="submit">
+            </form>
+            {{ end }}
+            <div class="btns">
+                <a href="/"><div class="btn">Back</div></a>
+                {{ if and (ne .FinalWord .Word) (ne .Attempts 0) }}
+                <label for="submit-btn"><div class="btn">Submit</div></label>
+                {{ end }}
+            </div>
+        </div>    
     </div>
-    <div>
-        {{ if and (ne .FinalWord .Word) (ne .Attempts 0) }}
-        <form method="POST">
-            <label for="name">Name:</label>
-            <input id="name" type="text" name="name" placeholder="Your name here">
-        </form>
-        {{ end }}
-    </div>
+    
 </body>
 </html>

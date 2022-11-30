@@ -19,20 +19,36 @@ func main() {
 
 	// Handles default route:
 	http.HandleFunc("/hangman", func(w http.ResponseWriter, r *http.Request) {
-		if data.FinalWord == "" {
-			data.InitGame("words.txt")
-		}
 		template := template.Must(template.ParseFiles("assets/templates/hangman.html"))
 		if r.Method == http.MethodPost {
-			data.RoundResult(r.FormValue("name"))
+			if r.FormValue("name") != "" && data.Attempts > 0 {
+				data.RoundResult(r.FormValue("name"))
+			} else if r.FormValue("difficulty") != "" {
+				switch r.FormValue("difficulty") {
+				case "easy":
+					data.InitGame("words.txt")
+					fmt.Println("easy")
+				case "hard":
+					data.InitGame("words3.txt")
+					fmt.Println("hard")
+				default:
+					data.InitGame("words2.txt")
+					fmt.Println("medium")
+				}
+			}
+		}
+		if data.FinalWord == "" {
+			data.InitGame("words2.txt")
 		}
 		template.Execute(w, data)
+
 	})
 
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		if r.Method == http.MethodPost {
-			fmt.Println(r.FormValue("reset"))
-			data = hangman.HangManData{}
+			if r.FormValue("reset") == "true" {
+				data = hangman.HangManData{}
+			}
 		}
 		template := template.Must(template.ParseFiles("index.html"))
 		template.Execute(w, data)

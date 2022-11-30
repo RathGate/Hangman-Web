@@ -27,6 +27,7 @@ func (data *HangManData) AddUsedLetters(letter string) bool {
 	}
 	data.UsedLetters = append(data.UsedLetters, letter)
 	sort.Strings(data.UsedLetters)
+	data.UsedToString = strings.Join(data.UsedLetters, " ")
 	return true
 }
 

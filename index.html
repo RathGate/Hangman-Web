@@ -10,9 +10,28 @@
     <title>Main Page</title>
 </head>
 <body>
-    <div>
-        <a href="/hangman"><div class="btn">{{ if eq .FinalWord ""}}Play{{else}}Resume{{end}}</div></a>
-        {{ if ne .FinalWord ""}}<div id="reset-btn" class="btn" onclick="resetGame()">Reset Game</div>{{end}}
+    <div class="game-info">
+        {{ if eq .FinalWord "" }}
+        <form action="/hangman" method="POST">
+            <label for="diff-easy">
+                <input id="diff-easy" type="radio" name="difficulty" value="easy">
+                <span>Easy</span>
+            </label>
+            <label for="diff-medium">
+                <input id="diff-medium" type="radio" name="difficulty" value="medium" checked>
+                <span>Medium</span>
+            </label>
+            <label for="diff-hard">
+                <input id="diff-hard" type="radio" name="difficulty" value="hard">
+                <span>Hard</span>
+            </label>
+            <input class="hidden" type="submit" id="diff-submit">
+        </form>
+        <label for="diff-submit"><div class="btn">Play</div></label>
+        {{ else }}
+        <a href="/hangman"><div class="btn">Resume</div></a>
+        <div id="reset-btn" class="btn" onclick="resetGame()">Reset Game</div>
+        {{end}}
     </div>
 </body>
 </html>
