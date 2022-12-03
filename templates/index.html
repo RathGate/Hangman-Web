@@ -5,25 +5,28 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-    <script src="js/script.js"></script>
-    <link rel="stylesheet" href="css/styles.css">
+    <script src="assets/js/script.js"></script>
+    <link rel="stylesheet" href="assets/css/styles.css">
     <title>Main Page</title>
 </head>
 <body>
     <div class="game-info">
         {{ if eq .FinalWord "" }}
         <form action="/hangman" method="POST">
-            <label for="diff-easy">
+            <label class="radio-container" for="diff-easy">
                 <input id="diff-easy" type="radio" name="difficulty" value="easy">
-                <span>Easy</span>
+                <span class="radio-checkmark"></span>
+                <span>EASY</span>
             </label>
-            <label for="diff-medium">
+            <label class="radio-container" for="diff-medium">
                 <input id="diff-medium" type="radio" name="difficulty" value="medium" checked>
-                <span>Medium</span>
+                <span class="radio-checkmark"></span>
+                <span>MEDIUM</span>
             </label>
-            <label for="diff-hard">
+            <label class="radio-container" for="diff-hard">
                 <input id="diff-hard" type="radio" name="difficulty" value="hard">
-                <span>Hard</span>
+                <span class="radio-checkmark"></span>
+                <span>HARD</span>
             </label>
             <input class="hidden" type="submit" id="diff-submit">
         </form>

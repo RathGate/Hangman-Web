@@ -12,14 +12,12 @@ var data hangman.HangManData
 
 func main() {
 	// Handles css files:
-	cssHandler := http.FileServer(http.Dir("assets/css"))
-	http.Handle("/css/", http.StripPrefix("/css/", cssHandler))
-	jsHandler := http.FileServer(http.Dir("assets/js"))
-	http.Handle("/js/", http.StripPrefix("/js/", jsHandler))
+	static := http.FileServer(http.Dir("assets"))
+	http.Handle("/assets/", http.StripPrefix("/assets/", static))
 
 	// Handles default route:
 	http.HandleFunc("/hangman", func(w http.ResponseWriter, r *http.Request) {
-		template := template.Must(template.ParseFiles("assets/templates/hangman.html"))
+		template := template.Must(template.ParseFiles("templates/hangman.html"))
 		if r.Method == http.MethodPost {
 			if r.FormValue("name") != "" && data.Attempts > 0 {
 				data.RoundResult(r.FormValue("name"))
@@ -27,13 +25,10 @@ func main() {
 				switch r.FormValue("difficulty") {
 				case "easy":
 					data.InitGame("words.txt")
-					fmt.Println("easy")
 				case "hard":
 					data.InitGame("words3.txt")
-					fmt.Println("hard")
 				default:
 					data.InitGame("words2.txt")
-					fmt.Println("medium")
 				}
 			}
 		}
@@ -48,9 +43,11 @@ func main() {
 		if r.Method == http.MethodPost {
 			if r.FormValue("reset") == "true" {
 				data = hangman.HangManData{}
+				w.Write([]byte("ok !!"))
+				return
 			}
 		}
-		template := template.Must(template.ParseFiles("index.html"))
+		template := template.Must(template.ParseFiles("templates/index.html"))
 		template.Execute(w, data)
 	})
 
