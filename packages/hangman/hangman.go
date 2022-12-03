@@ -10,11 +10,12 @@ import (
 )
 
 type HangManData struct {
-	Word         string // Word composed of '_', ex: H_ll_
-	FinalWord    string // Final word chosen by the program at the beginning. It is the word to find
-	Attempts     int    // Number of attempts left
+	Word         string
+	FinalWord    string
+	Attempts     int
 	UsedLetters  []string
 	UsedToString string
+	Won          int
 }
 
 func (data *HangManData) InitGame(dictFile string) {

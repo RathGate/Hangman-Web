@@ -7,8 +7,14 @@ import (
 )
 
 // Checks if the word had been entirely uncovered.
-func (data *HangManData) IsDiscovered() bool {
-	return data.Word == data.FinalWord
+func (data HangManData) CheckGameState() int {
+
+	if data.Word == data.FinalWord && data.Attempts > 0 {
+		return 1
+	} else if data.Attempts == 0 {
+		return -1
+	}
+	return 0
 }
 
 func (data *HangManData) RevealLetter(answer string) {

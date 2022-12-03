@@ -1,0 +1,6 @@
+{{ define "scoreboard" }} 
+    <h2>Logged as {{ .Name }}</h2>
+    <h3>Game Mode: {{ .CurrentDifficulty.Name }}</h3>
+    <div>Current Win Streak: {{ .CurrentDifficulty.CurrentWinStreak }}</div>
+    <div>Game Count: {{ .CurrentDifficulty.WinCount }} / {{ .CurrentDifficulty.LoseCount }}</div>
+{{ end }}
