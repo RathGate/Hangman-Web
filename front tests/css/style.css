@@ -1,5 +1,6 @@
 @import url("game.css");
 @import url("normalize.css");
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@900;300&display=swap');
 
 * {
     box-sizing: border-box;
@@ -122,7 +123,7 @@ main {
     background: transparent;
 }
 
-.start-game>button {
+.start-game>a {
     color: rgb(255, 255, 255);
     padding: 15px 7px;
     margin: 50px 10px;
@@ -130,9 +131,10 @@ main {
     border-radius: 7px;
     background-color: rgb(32, 24, 56);
     outline: none;
+    text-decoration: none;
 }
 
-.start-game>button:hover {
+.start-game>a:hover {
     color: rgb(255, 255, 255);
     background-color: rgb(32, 24, 56);
 }
