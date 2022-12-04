@@ -1,6 +1,6 @@
 {{ define "scoreboard" }} 
-    <h2>Logged as {{ .Name }}</h2>
-    <h3>Game Mode: {{ .CurrentDifficulty.Name }}</h3>
-    <div>Current Win Streak: {{ .CurrentDifficulty.CurrentWinStreak }}</div>
-    <div>Game Count: {{ .CurrentDifficulty.WinCount }} / {{ .CurrentDifficulty.LoseCount }}</div>
+    <h2>Logged as <span id="playername">{{ .Name }}</span></h2>
+    <h3>Game Mode: <span id="diffname">{{ .CurrentDifficulty.Name }}</span></h3>
+    <div>Current Win Streak: <span id="winstreak">{{ .CurrentDifficulty.CurrentWinStreak }}</span></div>
+    <div>Game Count: <span id="wincount">{{ .CurrentDifficulty.WinCount }}</span> / <span id="losecount">{{ .CurrentDifficulty.LoseCount }}</span></div>
 {{ end }}

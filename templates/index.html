@@ -6,19 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <link rel="stylesheet" href="assets/css/styles.css">
+    <script src="../assets/js/script.js"></script>
     <title>Home | Hangman Web</title>
 </head>
 <body>
-    <div class="game-info">
+    <div class="game-info" onload="defaultCheck()">
         {{ if eq .GameData.FinalWord "" }}
-        <form action="/hangman" method="POST">
+        <form id="difficulty-form" action="/hangman" method="POST">
             <label class="radio-container" for="diff-easy">
                 <input id="diff-easy" type="radio" name="difficulty" value="easy">
                 <span class="radio-checkmark"></span>
                 <span>EASY</span>
             </label>
             <label class="radio-container" for="diff-medium">
-                <input id="diff-medium" type="radio" name="difficulty" value="medium" checked>
+                <input id="diff-medium" type="radio" name="difficulty" value="medium">
                 <span class="radio-checkmark"></span>
                 <span>MEDIUM</span>
             </label>

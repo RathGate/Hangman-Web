@@ -1,6 +1,9 @@
 package session
 
-import "hangman-web/packages/hangman"
+import (
+	"fmt"
+	"hangman-web/packages/hangman"
+)
 
 type Player struct {
 	Name              string
@@ -27,8 +30,8 @@ type GameModeData struct {
 }
 
 type SessionData struct {
-	Player   Player
-	GameData hangman.HangManData
+	Player   *Player
+	GameData *hangman.HangManData
 }
 
 func (p *Player) Login(name string) {
@@ -37,8 +40,8 @@ func (p *Player) Login(name string) {
 }
 
 func (p *Player) Logout() {
-	p = &Player{}
-	_ = p
+	*p = Player{}
+	fmt.Println(p)
 }
 
 func (p *Player) SwitchDifficulty(difficulty string) {

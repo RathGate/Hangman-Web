@@ -15,7 +15,7 @@ type HangManData struct {
 	Attempts     int
 	UsedLetters  []string
 	UsedToString string
-	Won          int
+	HasEnded     bool
 }
 
 func (data *HangManData) InitGame(dictFile string) {
