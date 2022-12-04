@@ -9,7 +9,7 @@ import (
 	"time"
 )
 
-type HangManData struct {
+type HangmanData struct {
 	Word         string
 	FinalWord    string
 	Attempts     int
@@ -18,7 +18,7 @@ type HangManData struct {
 	HasEnded     bool
 }
 
-func (data *HangManData) InitGame(dictFile string) {
+func (data *HangmanData) InitGame(dictFile string) {
 	rand.Seed(time.Now().UnixNano())
 
 	data.FinalWord = RandomWord(ReadFile(dictFile))
@@ -62,4 +62,8 @@ func RandomWord(lines []string) string {
 	rand.Seed(time.Now().UnixNano())
 	result := lines[rand.Intn(len(lines))]
 	return strings.ToUpper(result)
+}
+
+func (data *HangmanData) EmptyData() {
+	*data = HangmanData{}
 }

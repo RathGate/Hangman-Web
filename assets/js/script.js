@@ -1,6 +1,6 @@
 window.onload = () => {
     radioListener()
-    document.getElementById("difficulty-form").onload = defaultCheck()
+    defaultCheck()
 }
 
 function radioListener() {

@@ -7,8 +7,7 @@ import (
 )
 
 // Checks if the word had been entirely uncovered.
-func (data HangManData) CheckGameState() int {
-
+func (data HangmanData) CheckGameState() int {
 	if data.Word == data.FinalWord && data.Attempts > 0 {
 		return 1
 	} else if data.Attempts == 0 {
@@ -17,7 +16,7 @@ func (data HangManData) CheckGameState() int {
 	return 0
 }
 
-func (data *HangManData) RevealLetter(answer string) {
+func (data *HangmanData) RevealLetter(answer string) {
 	for i, letter := range data.FinalWord {
 		if answer == string(letter) {
 			data.Word = data.Word[:i] + string(data.FinalWord[i]) + data.Word[i+1:]
@@ -25,7 +24,8 @@ func (data *HangManData) RevealLetter(answer string) {
 	}
 }
 
-func (data *HangManData) AddUsedLetters(letter string) bool {
+// Returns false if letter already suggested, else returns true.
+func (data *HangmanData) AddUsedLetters(letter string) bool {
 	for _, char := range data.UsedLetters {
 		if char == letter {
 			return false
@@ -37,29 +37,31 @@ func (data *HangManData) AddUsedLetters(letter string) bool {
 	return true
 }
 
-func (data *HangManData) LosePoints(points int) {
+func (data *HangmanData) LosePoints(points int) {
 	data.Attempts -= points
 	if data.Attempts < 0 {
 		data.Attempts = 0
 	}
 }
 
-func (data *HangManData) RoundResult(answer string) int {
+// Round results initiates the round.
+// Returns -1 if the game is lost, 1 if it's won, else 0.
+func (data *HangmanData) RoundResult(answer string) int {
 	answer = strings.ToUpper(answer)
-	// Answer = 1 character
+
+	// Answer is invalid:
 	if !utils.IsAlpha(answer) {
 		return 0
-	}
-	if len(answer) == 1 {
+
+		// Answer is one-char long:
+	} else if len(answer) == 1 {
 		if !data.AddUsedLetters(answer) {
-			return 2
+			return 0
 		}
 		if strings.Contains(data.FinalWord, string(answer[0])) {
 			data.RevealLetter(answer)
-			return 0
 		} else {
 			data.LosePoints(1)
-			return -1
 		}
 		// Answer = at least 2 characters.
 	} else {
@@ -68,7 +70,7 @@ func (data *HangManData) RoundResult(answer string) int {
 			return 1
 		} else {
 			data.LosePoints(2)
-			return -2
 		}
 	}
+	return data.CheckGameState()
 }

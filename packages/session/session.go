@@ -31,7 +31,7 @@ type GameModeData struct {
 
 type SessionData struct {
 	Player   *Player
-	GameData *hangman.HangManData
+	GameData *hangman.HangmanData
 }
 
 func (p *Player) Login(name string) {
@@ -49,6 +49,7 @@ func (p *Player) SwitchDifficulty(difficulty string) {
 		return
 	}
 
+	p.CurrentDifficulty.CurrentWinStreak = 0
 	switch difficulty {
 	case "easy":
 		p.CurrentDifficulty = &p.ModeEasy

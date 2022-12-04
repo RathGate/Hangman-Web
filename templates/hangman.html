@@ -18,7 +18,7 @@
         <div class="game-form">
             {{ if and (ne .GameData.FinalWord .GameData.Word) (ne .GameData.Attempts 0) }}
             <form method="POST">
-                <input id="name" type="text" name="name" placeholder="Suggest something !" autofocus>
+                <input id="suggestion" type="text" name="suggestion" placeholder="Suggest something !" autofocus>
                 <input class="hidden" id="submit-btn" class="btn" type="submit">
             </form>
             {{ end }}

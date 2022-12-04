@@ -10,9 +10,12 @@ import (
 	"text/template"
 )
 
+// Player struct stores all the information linked to the current player if logged in.
+// HangmanData struct stores all the information linked to the current game played, if there's one.
 var player session.Player
-var gamedata hangman.HangManData
+var gamedata hangman.HangmanData
 
+// SessionData struct stores both instances above in order to send them to the templates.
 var data = session.SessionData{
 	Player:   &player,
 	GameData: &gamedata,
@@ -21,12 +24,12 @@ var data = session.SessionData{
 func indexHandler(w http.ResponseWriter, r *http.Request) {
 
 	// Handles the POST request if any (can be game reset, login or logout):
-	if r.Method == http.MethodPost {
+	if r.Method == "POST" {
+
 		if r.FormValue("reset") == "reset" {
-			gamedata = hangman.HangManData{}
+			gamedata.EmptyData()
 		} else if r.FormValue("username") != "" {
 			player.Login(r.FormValue("username"))
-
 		} else if r.FormValue("logout") != "" {
 			player.Logout()
 		} else if r.FormValue("getDifficultyData") != "" {
@@ -46,6 +49,7 @@ func indexHandler(w http.ResponseWriter, r *http.Request) {
 			}
 			return
 		}
+		http.Redirect(w, r, "/", http.StatusSeeOther)
 	}
 
 	// Defines the files to parse and executes the template:
@@ -56,26 +60,16 @@ func indexHandler(w http.ResponseWriter, r *http.Request) {
 
 func hangmanHandler(w http.ResponseWriter, r *http.Request) {
 
-	// Game can only be launched via the main page == via its form:
-	if r.Method == http.MethodPost {
-		if r.FormValue("name") != "" && gamedata.Attempts > 0 {
-			gamedata.RoundResult(r.FormValue("name"))
-			if !gamedata.HasEnded {
-				switch gamedata.CheckGameState() {
-				case -1:
-					player.LoseRound()
-				case 1:
-					player.WinRound()
-				}
-				gamedata.HasEnded = true
-			}
-
-		} else if r.FormValue("difficulty") != "" {
-
+	if r.Method == "POST" {
+		// *PLAYER HAS CHOSEN A DIFFICULTY AND CLICKED START → Launches the game:
+		if r.FormValue("difficulty") != "" {
+			// Player tried to launch a game when there was already one;
+			// if the player has already lost at least one point, loses the current game:
 			if gamedata.FinalWord != "" && gamedata.Attempts < 10 {
 				data.ResetGame()
 			}
 
+			// Launches the game with the appropriate dictionary file:
 			switch r.FormValue("difficulty") {
 			case "easy":
 				gamedata.InitGame("words.txt")
@@ -84,20 +78,38 @@ func hangmanHandler(w http.ResponseWriter, r *http.Request) {
 			default:
 				gamedata.InitGame("words2.txt")
 			}
+
+			// If the player is logged in, changes their current difficulty in their settings:
 			player.SwitchDifficulty(r.FormValue("difficulty"))
+
+			// *PLAYER FILLED THE SUGGESTION INPUT → Launches the round:
+		} else if r.FormValue("suggestion") != "" && gamedata.Attempts > 0 {
+
+			// Plays the round:
+			result := gamedata.RoundResult(r.FormValue("suggestion"))
+			// Wins or loses the game, if already won/lost, does nothing.
+			if result != 0 && !gamedata.HasEnded {
+				if result == 1 {
+					player.WinRound()
+				} else {
+					player.LoseRound()
+
+				}
+				gamedata.HasEnded = true
+			}
 		}
+		http.Redirect(w, r, "/hangman", http.StatusSeeOther)
 	}
 
-	// Tried to access the page when no game was launched:
-	// redirects to the home page.
+	// *REDIRECTS TO HOMEPAGE IF PAGE ACCESSED WITH NO PENDING GAME:
 	if gamedata.FinalWord == "" {
 		http.Redirect(w, r, "/", http.StatusSeeOther)
 	}
 
-	// Defines the files to parse and executes the template:
+	// ?PARSES THE FILES NEEDED AND EXECUTES THE TEMPLATES:
 	files := []string{"templates/hangman.html", "templates/_scoreboard.html"}
-	template := template.Must(template.ParseFiles(files...))
-	template.Execute(w, data)
+	tmpl := template.Must(template.ParseFiles(files...))
+	tmpl.Execute(w, data)
 }
 
 func main() {
