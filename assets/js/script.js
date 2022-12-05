@@ -23,9 +23,9 @@ function updateScoreboard(data) {
     } else {
         data = JSON.parse(data)
         document.getElementById("diffname").innerHTML = data.Name
-        document.getElementById("winstreak").innerHtml = data.CurrentWinStreak
-        document.getElementById("wincount").innerHtml = data.WinCount
-        document.getElementById("losecount").innerHtml = data.LoseCount
+        document.getElementById("winstreak").innerHTML = data.CurrentWinStreak
+        document.getElementById("wincount").innerHTML = data.WinCount
+        document.getElementById("losecount").innerHTML = data.LoseCount
     }
 }
 
