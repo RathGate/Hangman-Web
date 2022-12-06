@@ -1,0 +1,169 @@
+@import url("game.css");
+@import url("normalize.css");
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@900;300&display=swap');
+
+* {
+    box-sizing: border-box;
+    background-color: #202020;
+    color: #221254;
+}
+
+html,
+main {
+    height: 100%;
+    width: 100%;
+    font-family: 'Roboto', sans-serif;
+}
+
+.box {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1500px;
+    min-height: 500px;
+    margin: 30px 50px;
+    border-radius: 15px;
+    background-color: #e1e1e1;
+}
+
+.row {
+    display: flex;
+    width: 100%;
+    padding: 10px 10px;
+    background-color: transparent;
+}
+
+.row-1 {
+    gap: 10px;
+    height: 70%;
+}
+
+.text {
+    background-color: transparent;
+}
+
+.headtitle {
+    display: flex;
+    text-align: left;
+    margin: 10px 5px;
+    background: transparent;
+    font-weight: 900;
+    font-size: 2.2em;
+}
+
+.content {
+    display: flex;
+    font-weight: 300;
+    text-align: left;
+    font-size: 2em;
+    margin: 10px 5px;
+    background: transparent;
+}
+
+.scoreboard {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    min-width: fit-content;
+    width: 50%;
+    height: 300px;
+    padding: 5px;
+    margin: 10px 10px;
+    border-radius: 15px;
+    background: rgb(198, 198, 198);
+}
+
+.sbtitle {
+    font-weight: 900;
+    font-size: 2.2em;
+    padding: 3px 3px;
+    background: transparent;
+}
+
+.scoretitle {
+    font-size: 1.5rem;
+    background: transparent;
+}
+
+.count {
+    font-size: 1.5em;
+    background: transparent;
+}
+
+.row-2 {
+    display: flex;
+    gap: 10px;
+    height: 30%;
+    justify-content: center;
+    align-items: center;
+    min-height: fit-content;
+}
+
+.name-input {
+    background: transparent;
+}
+
+.name-input>input[type=text] {
+    padding: 15px 10px;
+    width: 333px;
+    border: none;
+    border-radius: 7px;
+    background: #221254;
+    color: rgb(255, 255, 255);
+    outline: none;
+}
+
+.name-input>input[type=text]::placeholder {
+    color: rgb(118, 118, 118);
+}
+
+.start-game {
+    background-color: #221254;
+    padding: 15px 7px;
+    border-radius: 7px;
+}
+
+.start-game>a {
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+}
+
+.difficulty {
+    background: transparent;
+}
+
+.difficulty input[type="radio"] {
+    display: none;
+}
+
+.difficulty label {
+    color:#e1e1e1;
+    background-color: #221254;
+    padding: 15px 15px;
+    cursor: pointer;
+    border-radius: 7px;
+}
+
+.difficulty input[type="radio"]:checked+label {
+    background-color: #351b82;
+}
+
+/* .difficulty button {
+    color: rgb(255, 255, 255);
+    padding: 15px 15px;
+    border: none;
+    border-radius: 7px;
+    background-color: #221254;
+}
+
+
+.difficulty button:hover {
+    color: rgb(255, 255, 255);
+    background-color: #221254;
+} */
+
+.test {
+    height: 5%;
+    font-size: 12px;
+    justify-content: center;
+    align-items: center;
+}
