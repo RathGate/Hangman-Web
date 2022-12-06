@@ -23,6 +23,8 @@ var data = session.SessionData{
 
 func indexHandler(w http.ResponseWriter, r *http.Request) {
 
+	gamedata.CheckRoundState()
+
 	// Handles the POST request if any (can be game reset, login or logout):
 	if r.Method == "POST" {
 

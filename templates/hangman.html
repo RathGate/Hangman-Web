@@ -11,23 +11,11 @@
 </head>
 <body>
     <div class="game-info">
-        <div class="to-find">{{ .GameData.Word }}</div>
-        <div><span class="small-title">USED LETTERS:</span> {{ .GameData.UsedToString }}</div>
-        <div><span class="small-title">ATTEMPTS LEFT:</span> {{ .GameData.Attempts }}</div>
-
-        <div class="game-form">
-            {{ if and (ne .GameData.FinalWord .GameData.Word) (ne .GameData.Attempts 0) }}
-            <form method="POST">
-                <input id="suggestion" type="text" name="suggestion" placeholder="Suggest something !" autofocus>
-                <input class="hidden" id="submit-btn" class="btn" type="submit">
-            </form>
-            {{ end }}
-            <div class="btns">
-                <a href="/"><div class="btn">Back</div></a>
-                {{ if and (ne .GameData.FinalWord .GameData.Word) (ne .GameData.Attempts 0) }}
-                <label for="submit-btn"><div class="btn">Submit</div></label>
-                {{ end }}
-            </div>
+        {{ if .GameData.HasEnded }}
+            {{ template "results" .GameData }}
+        {{ else }}
+            {{ template "game" .GameData }}
+        {{ end }}
         </div>    
     </div>
     {{ if ne .Player.Name "" }}

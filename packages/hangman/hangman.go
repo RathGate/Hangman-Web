@@ -76,3 +76,9 @@ func RandomWord(lines []string) string {
 func (data *HangmanData) EmptyData() {
 	*data = HangmanData{}
 }
+
+func (data *HangmanData) CheckRoundState() {
+	if data.HasEnded {
+		data.EmptyData()
+	}
+}

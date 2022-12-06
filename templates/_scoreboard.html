@@ -1,6 +1,8 @@
 {{ define "scoreboard" }} 
+    {{ if ne .Name "" }}
     <h2>Logged as <span id="playername">{{ .Name }}</span></h2>
     <h3>Game Mode: <span id="diffname">{{ .CurrentDifficulty.Name }}</span></h3>
     <div>Current Win Streak: <span id="winstreak">{{ .CurrentDifficulty.CurrentWinStreak }}</span></div>
     <div>Game Count: <span id="wincount">{{ .CurrentDifficulty.WinCount }}</span> / <span id="losecount">{{ .CurrentDifficulty.LoseCount }}</span></div>
+    {{ end }}
 {{ end }}
