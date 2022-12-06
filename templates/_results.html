@@ -1,0 +1,18 @@
+{{ define "results" }}
+
+    {{ if ne .Attempts 0 }}
+    <h3>JOSE'S LIFE HAS BEEN SAVED!</h3>
+    {{ else }}
+    <h3>POOR JOSE LOST HIS HEAD...</h3>
+    {{ end }}
+
+    <div class="to-find">{{ .FinalWord }}</div>
+    <div><span class="small-title">USED LETTERS:</span> {{ .UsedToString }}</div>
+    <div><span class="small-title">ATTEMPTS LEFT:</span> {{ .Attempts }}</div>
+
+    <div class="btns">
+        <div class="btn">Main Menu</div>
+        <div class="btn">New Game</div>
+    </div>
+
+{{ end }}

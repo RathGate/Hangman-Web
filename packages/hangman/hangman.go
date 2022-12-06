@@ -21,6 +21,15 @@ type HangmanData struct {
 func (data *HangmanData) InitGame(dictFile string) {
 	rand.Seed(time.Now().UnixNano())
 
+	switch dictFile {
+	case "easy":
+		dictFile = "words.txt"
+	case "hard":
+		dictFile = "words3.txt"
+	default:
+		dictFile = "words.txt"
+	}
+
 	data.FinalWord = RandomWord(ReadFile(dictFile))
 	data.Word = strings.Repeat("_", len(data.FinalWord))
 	n := len(data.FinalWord)/2 - 1

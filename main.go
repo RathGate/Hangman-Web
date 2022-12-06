@@ -61,6 +61,7 @@ func indexHandler(w http.ResponseWriter, r *http.Request) {
 func hangmanHandler(w http.ResponseWriter, r *http.Request) {
 
 	if r.Method == "POST" {
+
 		// *PLAYER HAS CHOSEN A DIFFICULTY AND CLICKED START → Launches the game:
 		if r.FormValue("difficulty") != "" {
 			// Player tried to launch a game when there was already one;
@@ -69,16 +70,9 @@ func hangmanHandler(w http.ResponseWriter, r *http.Request) {
 				data.ResetGame()
 			}
 
-			// Launches the game with the appropriate dictionary file:
-			switch r.FormValue("difficulty") {
-			case "easy":
-				gamedata.InitGame("words.txt")
-			case "hard":
-				gamedata.InitGame("words3.txt")
-			default:
-				gamedata.InitGame("words2.txt")
-			}
-
+			// Launches the game with the appropriate dictionary file;
+			//
+			gamedata.InitGame(r.FormValue("difficulty"))
 			// If the player is logged in, changes their current difficulty in their settings:
 			player.SwitchDifficulty(r.FormValue("difficulty"))
 
@@ -107,7 +101,7 @@ func hangmanHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	// ?PARSES THE FILES NEEDED AND EXECUTES THE TEMPLATES:
-	files := []string{"templates/hangman.html", "templates/_scoreboard.html"}
+	files := []string{"templates/hangman.html", "templates/_scoreboard.html", "templates/_game.html", "templates/_results.html"}
 	tmpl := template.Must(template.ParseFiles(files...))
 	tmpl.Execute(w, data)
 }
@@ -122,7 +116,7 @@ func main() {
 	http.HandleFunc("/hangman", hangmanHandler)
 
 	// Launches the server:
-	preferredPort := ":6969"
+	preferredPort := ":8080"
 	fmt.Printf("Starting server at port %v\n", preferredPort)
 	if err := http.ListenAndServe(preferredPort, nil); err != nil {
 		log.Fatal(err)

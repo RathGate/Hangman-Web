@@ -41,7 +41,7 @@
         {{end}}
     </div>
     <div class="scoreboard">
-        {{ if eq .Player.Name "" }}
+        {{ if and (eq .Player.Name "") (eq .GameData.FinalWord "") }}
         <form action="/" method="POST">
             <label for="username">USERNAME:
                 <input id="username" name="username" type="text">

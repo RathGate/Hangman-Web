@@ -49,7 +49,6 @@ func (p *Player) SwitchDifficulty(difficulty string) {
 		return
 	}
 
-	p.CurrentDifficulty.CurrentWinStreak = 0
 	switch difficulty {
 	case "easy":
 		p.CurrentDifficulty = &p.ModeEasy
@@ -86,7 +85,13 @@ func (p *Player) LoseRound() {
 }
 
 func (s *SessionData) ResetGame() {
+	if s.GameData.HasEnded {
+		s.GameData = &hangman.HangmanData{}
+		return
+	}
 	if s.GameData.FinalWord != "" && s.GameData.Attempts < 10 {
 		s.Player.LoseRound()
+
 	}
+	s.GameData = &hangman.HangmanData{}
 }

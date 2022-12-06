@@ -1,0 +1,22 @@
+{{ define "game" }}
+
+<div class="to-find">{{ .Word }}</div>
+<div><span class="small-title">USED LETTERS:</span> {{ .UsedToString }}</div>
+<div><span class="small-title">ATTEMPTS LEFT:</span> {{ .Attempts }}</div>
+
+<div class="game-form">
+    {{ if and (ne .FinalWord .Word) (ne .Attempts 0) }}
+    <form method="POST">
+        <input id="suggestion" type="text" name="suggestion" placeholder="Suggest something !" autofocus>
+        <input class="hidden" id="submit-btn" class="btn" type="submit">
+    </form>
+    {{ end }}
+    <div class="btns">
+        <a href="/"><div class="btn">Back</div></a>
+        {{ if and (ne .FinalWord .Word) (ne .Attempts 0) }}
+        <label for="submit-btn"><div class="btn">Submit</div></label>
+        {{ end }}
+    </div>
+</div>
+
+{{ end }}
