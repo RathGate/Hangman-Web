@@ -2,7 +2,6 @@ package hangman
 
 import (
 	"bufio"
-	"fmt"
 	"log"
 	"math/rand"
 	"os"
@@ -20,7 +19,6 @@ type HangmanData struct {
 }
 
 func (data *HangmanData) InitGame(dictFile string) {
-	fmt.Println("ENTERS > InitGame")
 	rand.Seed(time.Now().UnixNano())
 
 	switch dictFile {
@@ -45,8 +43,6 @@ func (data *HangmanData) InitGame(dictFile string) {
 		}
 	}
 	data.Attempts = 10
-	fmt.Println("LEAVES > InitGame")
-	fmt.Printf("RESULT > %v\n", data)
 }
 
 func ReadFile(filename string) []string {
@@ -78,13 +74,6 @@ func RandomWord(lines []string) string {
 }
 
 func (data *HangmanData) EmptyData() {
-	fmt.Println("ENTERS > EmptyData")
-	*data = HangmanData{}
-	fmt.Println("LEAVES > EmptyData")
-}
 
-func (data *HangmanData) CheckRoundState() {
-	if data.HasEnded {
-		data.EmptyData()
-	}
+	*data = HangmanData{}
 }
