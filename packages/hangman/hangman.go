@@ -18,16 +18,18 @@ type HangmanData struct {
 	HasEnded     bool
 }
 
-func (data *HangmanData) InitGame(dictFile string) {
+func (data *HangmanData) InitGame(difficulty string) {
 	rand.Seed(time.Now().UnixNano())
 
-	switch dictFile {
+	var dictFile string
+
+	switch difficulty {
 	case "easy":
 		dictFile = "words.txt"
 	case "hard":
 		dictFile = "words3.txt"
 	default:
-		dictFile = "words.txt"
+		dictFile = "words2.txt"
 	}
 
 	data.FinalWord = RandomWord(ReadFile(dictFile))
