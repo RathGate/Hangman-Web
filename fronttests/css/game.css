@@ -1,7 +1,22 @@
 .gamecontent {
     display: flex;
+    justify-content: center;
     margin: 30px 60px;
     gap: 10px;
+}
+
+.back {
+    color: #e1e1e1;
+    border-radius: 10px;
+    background-color: #221254;
+    height: fit-content;
+    text-align: center;
+    padding: 8px 6px;
+}
+
+.back>a {
+    color: rgb(255, 255, 255);
+    text-decoration: none;
 }
 
 .column-1 {
@@ -10,6 +25,45 @@
     border-radius: 15px;
     background-color: #e1e1e1;
 }
+
+.username {
+    background: transparent;
+}
+
+.attempts {
+    background: transparent;
+}
+
+.word {
+    background: transparent;
+}
+
+.lettersinput {
+    background: transparent;
+}
+
+.lettersinput>input[type=text] {
+    padding: 15px 10px;
+    width: 333px;
+    border: none;
+    border-radius: 7px;
+    background: #221254;
+    color: rgb(255, 255, 255);
+    outline: none;
+}
+
+.lettersinput>input[type=text]::placeholder {
+    color: rgb(118, 118, 118);
+}
+
+.letterstried {
+    background: transparent;
+}
+
+.restart {
+    background: transparent;
+}
+
 
 .column-2 {
     min-width: 400px;
