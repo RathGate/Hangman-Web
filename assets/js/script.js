@@ -1,7 +1,19 @@
 window.onload = () => {
     radioListener()
-    defaultCheck()
+
+    $( "#restart-btn" ).click(function() {
+        $.ajax({
+            type: "POST",
+            url: "/hangman",
+            data: { "difficulty": "current" },
+        });
+        window.location.href = "/hangman"
+      });
 }
+
+
+
+
 
 function radioListener() {
     radio = document.querySelectorAll(`[name="difficulty"]`)
@@ -9,7 +21,7 @@ function radioListener() {
         $.ajax({
             type: "POST",
             url: "/",
-            data: { "getDifficultyData": input.value },
+            data: { "requestedData": input.value },
             success: function(data) {
                 updateScoreboard(data)
             }
@@ -27,13 +39,4 @@ function updateScoreboard(data) {
         document.getElementById("wincount").innerHTML = data.WinCount
         document.getElementById("losecount").innerHTML = data.LoseCount
     }
-}
-
-function defaultCheck() {
-    if ($("#diffname").length) {
-        let content = document.getElementById("diffname").innerText
-        document.getElementById(`diff-${content}`).checked = true
-        return
-    } 
-    document.getElementById("diff-medium").checked = true;
 }

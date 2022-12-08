@@ -1,97 +1,83 @@
 package session
 
 import (
-	"fmt"
+	"encoding/json"
 	"hangman-web/packages/hangman"
 )
 
-type Player struct {
-	Name              string
-	TotalGameCount    int
-	CurrentDifficulty *GameModeData
-	ModeEasy          GameModeData
-	ModeMedium        GameModeData
-	ModeHard          GameModeData
-}
-
-func (p *Player) InitDifficulty() {
-	p.ModeEasy.Name = "easy"
-	p.ModeMedium.Name = "medium"
-	p.ModeHard.Name = "hard"
-	p.CurrentDifficulty = &p.ModeMedium
-}
-
-type GameModeData struct {
-	Name             string
-	WinCount         int
-	LoseCount        int
-	MaxWinStreak     int
-	CurrentWinStreak int
-}
-
 type SessionData struct {
-	Player   *Player
-	GameData *hangman.HangmanData
+	Player            *Player
+	GameData          *hangman.HangmanData
+	CurrentDifficulty string
 }
 
-func (p *Player) Login(name string) {
-	p.Name = name
-	p.InitDifficulty()
-}
+// *------------------------ START / RESET -----------------------* //
 
-func (p *Player) Logout() {
-	*p = Player{}
-	fmt.Println(p)
-}
+func (s *SessionData) StartNewGame(difficulty string) {
+	// Deletes current data if there's already a pending game.
+	s.ResetGame()
 
-func (p *Player) SwitchDifficulty(difficulty string) {
-	if p.Name == "" {
-		return
+	// Automatically sets difficulty to "medium" if neither "hard" or "easy".
+	// Prevents invalid values from being passed.
+	if difficulty != "hard" && difficulty != "easy" {
+		difficulty = "medium"
 	}
 
-	switch difficulty {
-	case "easy":
-		p.CurrentDifficulty = &p.ModeEasy
-
-	case "hard":
-		p.CurrentDifficulty = &p.ModeHard
-
-	default:
-		p.CurrentDifficulty = &p.ModeMedium
+	// Sets overall and player's current difficulty values if needed.
+	s.CurrentDifficulty = difficulty
+	if s.Player.IsLoggedIn {
+		s.Player.SetPlayerDifficulty(difficulty)
 	}
+
+	// Launches the game.
+	s.GameData.InitGame(difficulty)
 }
 
-func (p *Player) WinRound() {
-	if p.Name == "" {
-		return
-	}
-
-	p.TotalGameCount++
-	p.CurrentDifficulty.WinCount++
-	p.CurrentDifficulty.CurrentWinStreak++
-	if p.CurrentDifficulty.CurrentWinStreak > p.CurrentDifficulty.MaxWinStreak {
-		p.CurrentDifficulty.MaxWinStreak = p.CurrentDifficulty.CurrentWinStreak
-	}
-}
-
-func (p *Player) LoseRound() {
-	if p.Name == "" {
-		return
-	}
-
-	p.TotalGameCount++
-	p.CurrentDifficulty.LoseCount++
-	p.CurrentDifficulty.CurrentWinStreak = 0
-}
-
+// TODO: must be factorized
 func (s *SessionData) ResetGame() {
 	if s.GameData.HasEnded {
-		s.GameData = &hangman.HangmanData{}
+		s.GameData.EmptyData()
 		return
 	}
 	if s.GameData.FinalWord != "" && s.GameData.Attempts < 10 {
 		s.Player.LoseRound()
 
 	}
-	s.GameData = &hangman.HangmanData{}
+	s.GameData.EmptyData()
+}
+
+func (s *SessionData) PlayRound(suggested string) {
+	// Round result: -1 equals game lost, 1 equals game won.
+	result := s.GameData.RoundResult(suggested)
+	if result == 0 || s.GameData.HasEnded {
+		return
+	}
+
+	if result == 1 {
+		s.Player.WinRound()
+	} else {
+		s.Player.LoseRound()
+	}
+
+	s.GameData.HasEnded = true
+}
+
+// *------------------ RESPONSES TO JAVASCRIPT -------------------* //
+
+// Get player's GameMode data depending on the requested difficulty.
+// Returns a response in []byte that shall be sent back to JS.
+func (p Player) GetGameModeData(request string) (data []byte) {
+	if !p.IsLoggedIn {
+		return []byte("404")
+	}
+
+	switch request {
+	case "easy":
+		data, _ = json.Marshal(p.ModeEasy)
+	case "hard":
+		data, _ = json.Marshal(p.ModeHard)
+	default:
+		data, _ = json.Marshal(p.ModeMedium)
+	}
+	return data
 }

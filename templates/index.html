@@ -10,21 +10,21 @@
     <title>Home | Hangman Web</title>
 </head>
 <body>
-    <div class="game-info" onload="defaultCheck()">
+    <div class="game-info">
         {{ if eq .GameData.FinalWord "" }}
         <form id="difficulty-form" action="/hangman" method="POST">
             <label class="radio-container" for="diff-easy">
-                <input id="diff-easy" type="radio" name="difficulty" value="easy">
+                <input id="diff-easy" type="radio" name="difficulty" value="easy" {{if eq .CurrentDifficulty "easy"}}checked{{end}}>
                 <span class="radio-checkmark"></span>
                 <span>EASY</span>
             </label>
             <label class="radio-container" for="diff-medium">
-                <input id="diff-medium" type="radio" name="difficulty" value="medium">
+                <input id="diff-medium" type="radio" name="difficulty" value="medium" {{if eq .CurrentDifficulty "medium"}}checked{{end}}>
                 <span class="radio-checkmark"></span>
                 <span>MEDIUM</span>
             </label>
             <label class="radio-container" for="diff-hard">
-                <input id="diff-hard" type="radio" name="difficulty" value="hard">
+                <input id="diff-hard" type="radio" name="difficulty" value="hard" {{if eq .CurrentDifficulty "hard"}}checked{{end}}>
                 <span class="radio-checkmark"></span>
                 <span>HARD</span>
             </label>
