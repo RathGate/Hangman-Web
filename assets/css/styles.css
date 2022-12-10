@@ -26,9 +26,10 @@ body {
 .btn {
     border-radius: 5px;
     padding: 5px 10px;
-    border: 2px solid cyan;
+    border: 2px solid rgb(68, 0, 170);
     width: fit-content;
     cursor: pointer;
+    background-color: rgb(90, 0, 227);
 }
 
 .to-find {
@@ -70,10 +71,10 @@ input[type="submit"].hidden {
     text-align: center;
 }
 .game-form input[type="text"]:hover {
-    border-color: cyan;
+    border-color: rgb(90, 0, 227);
 }
 .game-form input[type="text"]:focus-visible {
-    border-color: cyan;
+    border-color: rgb(90, 0, 227);
 }
 .btns {
     display: flex;

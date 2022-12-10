@@ -15,7 +15,7 @@
     visibility: none;
 }
 .radio-container:hover input ~ .radio-checkmark {
-    background-color: rgba(236, 236, 236, 0.1);
+    background-color: rgba(90, 0, 227, 0.1);
 }
 .radio-checkmark {
     margin-right: 10px;
@@ -28,7 +28,6 @@
     height: 20px;
     width: 20px;
     border-radius: 50%;
-    border: 2px solid #ececec;
 }
 
 .radio-container input ~ .radio-checkmark::after {
@@ -38,10 +37,12 @@
 .radio-container input:checked ~ .radio-checkmark::after {
     content: "";
     position: absolute;
-    height: 50%;
-    width: 50%;
+    width: 0;
+    height: 0;
     top: 25%;
     left: 25%;
-    border-radius: 50%;
-    background: #ececec;
+    border-top: 5px solid transparent;
+    border-left: 10px solid rgb(90, 0, 227);
+    border-bottom: 5px solid transparent;
+    background: transparent;
 }
