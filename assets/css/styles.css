@@ -50,6 +50,8 @@ body {
     gap: 10px;
 }
 
+
+
 input[type="submit"].hidden {
     height: 0;
     width: 0%;
@@ -87,4 +89,16 @@ form {
     display: flex;
     flex-direction: column;
     gap: 10px;
+}
+
+.scoreboard input[type="submit"] {  
+    color:#ececec;
+    background-color: rgb(90, 0, 227);
+    width: fit-content;
+    border-radius: 5px;
+    border: 2px solid rgb(68, 0, 170);
+}
+
+.difficulty input[type="radio"] {
+    display: none;
 }

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,35 +10,40 @@
     <script src="../assets/js/script.js"></script>
     <title>Home | Hangman Web</title>
 </head>
+
 <body>
     <div class="game-info">
         {{ if eq .GameData.FinalWord "" }}
         <form id="difficulty-form" action="/hangman" method="POST">
-            <label class="radio-container" for="diff-easy">
-                <input id="diff-easy" type="radio" name="difficulty" value="easy" {{if eq .CurrentDifficulty "easy"}}checked{{end}}>
-                <span class="radio-checkmark"></span>
-                <span>EASY</span>
-            </label>
-            <label class="radio-container" for="diff-medium">
-                <input id="diff-medium" type="radio" name="difficulty" value="medium" {{if eq .CurrentDifficulty "medium"}}checked{{end}}>
-                <span class="radio-checkmark"></span>
-                <span>MEDIUM</span>
-            </label>
-            <label class="radio-container" for="diff-hard">
-                <input id="diff-hard" type="radio" name="difficulty" value="hard" {{if eq .CurrentDifficulty "hard"}}checked{{end}}>
-                <span class="radio-checkmark"></span>
-                <span>HARD</span>
-            </label>
+            <div class="difficulty">
+                <input id="diff-easy" type="radio" name="difficulty" value="easy" {{if eq .CurrentDifficulty "easy"
+                    }}checked{{end}}>
+                <label for="diff-easy">EASY</label>
+
+                <input id="diff-medium" type="radio" name="difficulty" value="medium" {{if eq .CurrentDifficulty "medium"
+                    }}checked{{end}}>
+                <label for="diff-medium">MEDIUM</label>
+
+                <input id="diff-hard" type="radio" name="difficulty" value="hard" {{if eq .CurrentDifficulty "hard"
+                    }}checked{{end}}>
+                <label for="diff-hard">HARD</label>
+            </div>
             <input class="hidden" type="submit" id="diff-submit">
         </form>
-        <label for="diff-submit"><div class="btn">Play</div></label>
+        <label for="diff-submit">
+            <div class="btn">PLAY</div>
+        </label>
         {{ else }}
-        <a href="/hangman"><div class="btn">Resume</div></a>
+        <a href="/hangman">
+            <div class="btn">RESUME</div>
+        </a>
         <form action="/" method="POST" style="height: 0; display:none;">
             <input type="hidden" name="reset" value="reset">
             <input type="submit" class="hidden" id="reset-submit">
         </form>
-        <label for="reset-submit"><div id="reset-btn" class="btn">Quit Game</div></label>
+        <label for="reset-submit">
+            <div id="reset-btn" class="btn">QUIT GAME</div>
+        </label>
         {{end}}
     </div>
     <div class="scoreboard">
@@ -46,7 +52,7 @@
             <label for="username">USERNAME:
                 <input id="username" name="username" type="text">
             </label>
-            <input type="submit" value="Log In">
+            <input type="submit" value="LOG IN">
         </form>
 
         {{ else }}
@@ -54,10 +60,11 @@
         {{ if eq .GameData.FinalWord ""}}
         <form action="/" method="POST">
             <input type="hidden" name="logout" value="logout">
-            <input type="submit" value="Log Out">
+            <input type="submit" value="LOG OUT">
         </form>
         {{ end }}
         {{ end }}
     </div>
 </body>
+
 </html>

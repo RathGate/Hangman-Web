@@ -1,4 +1,4 @@
-.radio-container {
+/* .radio-container {
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -45,4 +45,20 @@
     border-left: 10px solid rgb(90, 0, 227);
     border-bottom: 5px solid transparent;
     background: transparent;
+} */
+
+.difficulty input[type="radio"] {
+    display: none;
+}
+
+.difficulty label {
+    color:#e1e1e1;
+    background-color: #221254;
+    padding: 15px 15px;
+    cursor: pointer;
+    border-radius: 7px;
+}
+
+.difficulty input[type="radio"]:checked+label {
+    background-color: #351b82;
 }
