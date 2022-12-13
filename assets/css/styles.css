@@ -98,7 +98,3 @@ form {
     border-radius: 5px;
     border: 2px solid rgb(68, 0, 170);
 }
-
-.difficulty input[type="radio"] {
-    display: none;
-}
