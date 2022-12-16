@@ -1,58 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <link rel="stylesheet" href="../assets/css/styles.css">
-    <script src="../assets/js/script.js"></script>
     <title>Home | Hangman Web</title>
 </head>
-
 <body>
-    <div class="game-info">
+<main>
+    <section class="game-info">
         {{ if eq .GameData.FinalWord "" }}
         <form id="difficulty-form" action="/hangman" method="POST">
             <div class="difficulty">
                 <input id="diff-easy" type="radio" name="difficulty" value="easy" {{if eq .CurrentDifficulty "easy"
-                    }}checked{{end}}>
+                }}checked{{end}}>
                 <label for="diff-easy">EASY</label>
 
                 <input id="diff-medium" type="radio" name="difficulty" value="medium" {{if eq .CurrentDifficulty "medium"
-                    }}checked{{end}}>
+                }}checked{{end}}>
                 <label for="diff-medium">MEDIUM</label>
 
                 <input id="diff-hard" type="radio" name="difficulty" value="hard" {{if eq .CurrentDifficulty "hard"
-                    }}checked{{end}}>
+                }}checked{{end}}>
                 <label for="diff-hard">HARD</label>
             </div>
             <input class="hidden" type="submit" id="diff-submit">
         </form>
-        <label for="diff-submit">
-            <div class="btn">PLAY</div>
-        </label>
+        <label for="diff-submit"><div class="btn glosseffect">Play</div></label>
         {{ else }}
-        <a href="/hangman">
-            <div class="btn">RESUME</div>
-        </a>
+        <a href="/hangman"><div class="btn glosseffect">Resume</div></a>
         <form action="/" method="POST" style="height: 0; display:none;">
             <input type="hidden" name="reset" value="reset">
             <input type="submit" class="hidden" id="reset-submit">
         </form>
-        <label for="reset-submit">
-            <div id="reset-btn" class="btn">QUIT GAME</div>
-        </label>
+        <label for="reset-submit"><div id="reset-btn" class="btn glosseffect">Quit Game</div></label>
         {{end}}
-    </div>
-    <div class="scoreboard">
+    </section>
+    <section class="scoreboard">
         {{ if and (eq .Player.Name "") (eq .GameData.FinalWord "") }}
         <form action="/" method="POST">
             <label for="username">USERNAME:
                 <input id="username" name="username" type="text">
             </label>
-            <input type="submit" value="LOG IN">
+            <input type="submit" value="LOG IN" class="btn glosseffect">
         </form>
 
         {{ else }}
@@ -60,11 +52,12 @@
         {{ if eq .GameData.FinalWord ""}}
         <form action="/" method="POST">
             <input type="hidden" name="logout" value="logout">
-            <input type="submit" value="LOG OUT">
+            <input type="submit" value="LOG OUT" class="btn glosseffect">
         </form>
         {{ end }}
         {{ end }}
-    </div>
+    </section>
+</main>
+<script src="assets/js/script.js"></script>
 </body>
-
 </html>

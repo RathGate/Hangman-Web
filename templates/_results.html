@@ -1,18 +1,18 @@
 {{ define "results" }}
 
     {{ if ne .Attempts 0 }}
-    <h3>JOSE'S LIFE HAS BEEN SAVED!</h3>
+    <img class="results" src="/assets/won.jpg">
     {{ else }}
-    <h3>POOR JOSE LOST HIS HEAD...</h3>
+    <img class="results" src="/assets/lost.jpg">
     {{ end }}
 
-    <div class="to-find">{{ .FinalWord }}</div>
+    <div class="to-find">The word was {{ .FinalWord }}</div>
     <div><span class="small-title">USED LETTERS:</span> {{ .UsedToString }}</div>
     <div><span class="small-title">ATTEMPTS LEFT:</span> {{ .Attempts }}</div>
 
     <div class="btns">
-        <a href="/"><div class="btn">MAIN MENU</div></a>
-        <div id="restart-btn" class="btn">NEW GAME</div>
+        <a href="/"><div class="btn glosseffect">MAIN MENU</div></a>
+        <div id="restart-btn" class="btn glosseffect">NEW GAME</div>
     </div>
 
 {{ end }}

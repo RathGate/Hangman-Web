@@ -1,19 +1,17 @@
-window.onload = () => {
-    radioListener()
+function loadJose() {
 
-    $( "#restart-btn" ).click(function() {
-        $.ajax({
-            type: "POST",
-            url: "/hangman",
-            data: { "difficulty": "current" },
-        });
-        window.location.href = "/hangman"
-      });
+    if (!$("#jose").length || attempts == 10) {
+        return
+    }
+
+    console.log(attempts)
+    let divs = document.querySelectorAll('[attempts]')
+
+    for (let i = 0; i < 10 - attempts; i++) {
+        console.log(divs[i])
+        divs[i].classList.add("visible")
+    }
 }
-
-
-
-
 
 function radioListener() {
     radio = document.querySelectorAll(`[name="difficulty"]`)
@@ -40,3 +38,14 @@ function updateScoreboard(data) {
         document.getElementById("losecount").innerHTML = data.LoseCount
     }
 }
+
+radioListener()
+$( "#restart-btn" ).click(function() {
+    $.ajax({
+        type: "POST",
+        url: "/hangman",
+        data: { "difficulty": "current" },
+    });
+    window.location.href = "/hangman"
+});
+loadJose()

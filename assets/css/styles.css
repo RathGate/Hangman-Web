@@ -1,4 +1,5 @@
 @import url("checkboxes.css");
+@import url("jose.css");
 
 * {
     box-sizing: border-box;
@@ -17,19 +18,29 @@ html, body {
     background-color: #131313;
     color: #ececec;
     font-family: Arial, Helvetica, sans-serif;
+    background-image: url("/assets/background.jpg");
+    background-size: 100%;
 }
 body {
     display: flex;
     align-items: center;
     justify-content: center;
 }
+main {
+    width: 95%;
+    max-width: 1000px;
+    aspect-ratio: 2/1;
+    display: flex;
+}
+section {
+    border: 2px solid red;
+    height: 100%;
+    width: 50%;
+}
+
 .btn {
-    border-radius: 5px;
-    padding: 5px 10px;
-    border: 2px solid rgb(68, 0, 170);
-    width: fit-content;
-    cursor: pointer;
-    background-color: rgb(90, 0, 227);
+    background-color: #c0c0c0;
+    box-shadow:1px 1px 5px black,inset 1px 1px 2px #fbfbfb,0 0 2px #d8d8d8, inset 0 18px 0 #ededed;
 }
 
 .to-find {
@@ -50,8 +61,6 @@ body {
     gap: 10px;
 }
 
-
-
 input[type="submit"].hidden {
     height: 0;
     width: 0%;
@@ -59,6 +68,13 @@ input[type="submit"].hidden {
     visibility: hidden;
     display: none;
 }
+
+input[type="submit"] {
+    text-decoration: none;
+    border: none;
+    width: fit-content;
+}
+
 .game-form input[type="text"] {
     background-color: transparent;
     padding: 3px 3px 5px;
@@ -73,10 +89,10 @@ input[type="submit"].hidden {
     text-align: center;
 }
 .game-form input[type="text"]:hover {
-    border-color: rgb(90, 0, 227);
+    border-color: cyan;
 }
 .game-form input[type="text"]:focus-visible {
-    border-color: rgb(90, 0, 227);
+    border-color: cyan;
 }
 .btns {
     display: flex;
@@ -91,10 +107,27 @@ form {
     gap: 10px;
 }
 
-.scoreboard input[type="submit"] {  
-    color:#ececec;
-    background-color: rgb(90, 0, 227);
-    width: fit-content;
-    border-radius: 5px;
-    border: 2px solid rgb(68, 0, 170);
+.glosseffect {
+    text-shadow:0 0 2px #000;
+    border-radius:7px;
+    color:#FFF!important;
+    cursor:pointer;
+    font-size:15px!important;
+    font-weight:700!important;
+    line-height:25px;
+    text-decoration:none!important;
+    -webkit-touch-callout:none;
+    -webkit-user-select:none;
+    -khtml-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    user-select:none;
+    margin:4px;
+    padding:4px 14px;
+}
+
+.results {
+    display: flex;
+    height: 270px;
+    width: 375px;
 }
