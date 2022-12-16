@@ -1,10 +1,17 @@
 @import url("checkboxes.css");
 @import url("jose.css");
 
+@font-face {
+    font-family: "Hemi Head";
+    src: url(/assets/fonts/hemi_head.ttf);
+}
+
 * {
     box-sizing: border-box;
 }
-
+h1, h2, p {
+    margin: 0;
+}
 a {
     color: #ececec;
     text-decoration: none;
@@ -17,8 +24,9 @@ html, body {
     width: 100%;
     background-color: #131313;
     color: #ececec;
-    font-family: Arial, Helvetica, sans-serif;
-    background-image: url("/assets/background.jpg");
+    font-family: "Changa", sans-serif;
+    line-height: 1.15;
+    background-image: url("/assets/background.png");
     background-size: 100%;
 }
 body {
@@ -27,20 +35,28 @@ body {
     justify-content: center;
 }
 main {
+    border: 3px solid white;
+    border-radius: 3px;
+    backdrop-filter: blur(3px);
+    background-color: rgba(0, 0, 0, 0.4);
     width: 95%;
-    max-width: 1000px;
+    max-width: 1200px;
     aspect-ratio: 2/1;
     display: flex;
 }
-section {
-    border: 2px solid red;
-    height: 100%;
-    width: 50%;
+
+.form-container {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
 }
 
 .btn {
-    background-color: #c0c0c0;
-    box-shadow:1px 1px 5px black,inset 1px 1px 2px #fbfbfb,0 0 2px #d8d8d8, inset 0 18px 0 #ededed;
+    width: fit-content;
 }
 
 .to-find {
@@ -52,15 +68,24 @@ section {
 .small-title {
     font-weight: bold;
 }
-.game-info {
-    padding: 20px;
+
+section  {
+    padding: 4%;
     display: flex;
-    align-items: center;
-    justify-content: center;
     flex-direction: column;
-    gap: 10px;
+
+    height: 100%;
+}
+.section-left {
+    width: 60%;
+    gap: 4%;
 }
 
+.section-right {
+    padding: 6% 4%;
+    flex: 1;
+    transition: .5s;
+}
 input[type="submit"].hidden {
     height: 0;
     width: 0%;
@@ -94,6 +119,7 @@ input[type="submit"] {
 .game-form input[type="text"]:focus-visible {
     border-color: cyan;
 }
+
 .btns {
     display: flex;
     justify-content: center;
@@ -107,27 +133,95 @@ form {
     gap: 10px;
 }
 
-.glosseffect {
-    text-shadow:0 0 2px #000;
+.gloss-effect {
+    background-color: #c0c0c0;
+    font-family: "Hemi Head";
+    box-shadow:1px 1px 5px black,inset 1px 1px 2px #fbfbfb,0 0 2px #d8d8d8, inset 0 18px 0 #ededed;
+    text-shadow:0 0 5px #000;
     border-radius:7px;
-    color:#FFF!important;
+    color:white;
     cursor:pointer;
-    font-size:15px!important;
-    font-weight:700!important;
+    font-size:18px;
+    font-weight:700;
     line-height:25px;
-    text-decoration:none!important;
-    -webkit-touch-callout:none;
-    -webkit-user-select:none;
-    -khtml-user-select:none;
-    -moz-user-select:none;
-    -ms-user-select:none;
     user-select:none;
     margin:4px;
     padding:4px 14px;
+    letter-spacing: 2px;
 }
 
 .results {
     display: flex;
     height: 270px;
     width: 375px;
+}
+
+h1 {
+    font-family: "Hemi Head", sans-serif;
+    font-size: 65px;
+    margin-bottom: 30px;
+}
+h2 {
+    font-family: "Hemi Head", sans-serif;
+    font-size: 45px;
+    text-align: center;
+    position: relative;
+}
+h3 {
+    font-family: "Hemi Head", sans-serif;
+    font-size: 24px;
+    margin: 0;
+}
+
+.section-left p {
+    font-size: 24px;
+}
+
+.section-right .separation {
+    margin: 10px 0;
+    height: 3px;
+    width: 100%;
+    background-color: #ff00ff;
+    filter: drop-shadow(0 0 15px #ff00ff) drop-shadow(0 0 50px #ff00ff);
+    position: relative;
+}
+.section-right .separation::after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    height: 3px;
+    width: 100%;
+    background: linear-gradient(to right, transparent, #ff00ff);
+    filter: drop-shadow(0 0 15px #ff00ff) drop-shadow(0 0 50px #ff00ff);
+}
+
+main > .separator {
+    height: 80%;
+    width: 2px;
+    margin: auto;
+    background-color: white;
+}
+
+.section-right form {
+    align-items: flex-end;
+}
+
+.scoreboard {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.scoreboard-data * {
+    margin: 5px 0;
+    font-size: 18px;
+}
+
+.scoreboard-data .separator {
+    width: 50%;
+    margin: 15px auto;
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.205);
+    filter: drop-shadow(0 0 15px white)
 }

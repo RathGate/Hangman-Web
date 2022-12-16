@@ -19,6 +19,7 @@
 .section-art {
     border: 2px solid darkcyan;
     position: relative;
+    flex-grow: 1;
 }
 
 .section-art * {
