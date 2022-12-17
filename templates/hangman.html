@@ -11,7 +11,7 @@
 </head>
 <body>
 <main>
-    <section class="game-info">
+    <section class="section-left">
         {{ if .GameData.HasEnded }}
         {{ template "results" .GameData }}
         {{ else }}
@@ -31,7 +31,7 @@
             </div>
         </div>
         <div class="jose">
-            <div id="head" attempts="5" class="neon"></div>
+            <div id="head" attempts="5"></div>
             <div id="body" attempts="4" class="bg-drawn neon"></div>
             <div class="limbs left">
                 <div id="left-arm" attempts="3" class="bg-drawn neon"></div>

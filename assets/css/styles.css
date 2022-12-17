@@ -9,7 +9,9 @@
 * {
     box-sizing: border-box;
 }
-
+h1, h2, p {
+    margin: 0;
+}
 a {
     color: #ececec;
     text-decoration: none;
@@ -23,11 +25,10 @@ html, body {
     background-color: #131313;
     color: #ececec;
     font-family: "Changa", sans-serif;
-
+    line-height: 1.15;
     background-image: url("/assets/background.jpg");
     background-size: 100%;
 }
-
 body {
     display: flex;
     align-items: center;
@@ -35,35 +36,21 @@ body {
 }
 main {
     border-radius: 3px;
-    backdrop-filter: blur(3px);
-    background-color: rgba(0, 0, 0, 0.33);
+    background-color: rgba(0, 0, 0, 0.4);
     width: 95%;
     max-width: 1200px;
     aspect-ratio: 2/1;
     display: flex;
 }
 
-section {
-    height: 100%;
-    width: 50%;
-}
-
-h1 {
-    font-family: "Hemi Head", sans-serif;
-    font-size: 65px;
-    margin-bottom: 30px;
-}
-
-h2 {
-    font-family: "Hemi Head", sans-serif;
-    font-size: 45px;
-    text-align: center;
-    position: relative;
-}
-h3 {
-    font-family: "Hemi Head", sans-serif;
-    font-size: 24px;
-    margin: 0;
+.form-container {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
 }
 
 .btn {
@@ -71,23 +58,34 @@ h3 {
 }
 
 .to-find {
+    font-family: "Hemi Head", sans-serif;
     font-size: 20px;
     letter-spacing: 10px;
     margin-bottom: 10px;
 }
 
 .small-title {
+    font-family: "Hemi Head", sans-serif;
     font-weight: bold;
 }
-.game-info {
-    padding: 20px;
+
+section  {
+    padding: 4%;
     display: flex;
-    align-items: center;
-    justify-content: center;
     flex-direction: column;
-    gap: 10px;
+
+    height: 100%;
+}
+.section-left {
+    width: 60%;
+    gap: 4%;
 }
 
+.section-right {
+    padding: 6% 4%;
+    flex: 1;
+    transition: .5s;
+}
 input[type="submit"].hidden {
     height: 0;
     width: 0%;
@@ -116,11 +114,14 @@ input[type="submit"] {
     text-align: center;
 }
 .game-form input[type="text"]:hover {
-    border-color: cyan;
+    border-color: #00eaff;
+    filter: drop-shadow(0 0 15px #00eaff) drop-shadow(0 0 50px #00eaff);
 }
 .game-form input[type="text"]:focus-visible {
-    border-color: cyan;
+    border-color: #00eaff;
+    filter: drop-shadow(0 0 15px #00eaff) drop-shadow(0 0 50px #00eaff);
 }
+
 .btns {
     display: flex;
     justify-content: center;
@@ -155,4 +156,74 @@ form {
     display: flex;
     height: 270px;
     width: 375px;
+}
+
+h1 {
+    font-family: "Hemi Head", sans-serif;
+    font-size: 65px;
+    margin-bottom: 30px;
+}
+h2 {
+    font-family: "Hemi Head", sans-serif;
+    font-size: 45px;
+    text-align: center;
+    position: relative;
+}
+h3 {
+    font-family: "Hemi Head", sans-serif;
+    font-size: 24px;
+    margin: 0;
+}
+
+.section-left p {
+    font-size: 24px;
+}
+
+.section-right .separation {
+    margin: 10px 0;
+    height: 3px;
+    width: 100%;
+    background-color: #ff00ff;
+    filter: drop-shadow(0 0 15px #ff00ff) drop-shadow(0 0 50px #ff00ff);
+    position: relative;
+}
+.section-right .separation::after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    height: 3px;
+    width: 100%;
+    background: linear-gradient(to right, transparent, #ff00ff);
+    filter: drop-shadow(0 0 15px #ff00ff) drop-shadow(0 0 50px #ff00ff);
+}
+
+main > .separator {
+    height: 80%;
+    width: 2px;
+    margin: auto;
+    background-color: white;
+}
+
+.section-right form {
+    align-items: flex-end;
+}
+
+.scoreboard {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.scoreboard-data * {
+    margin: 5px 0;
+    font-size: 18px;
+}
+
+.scoreboard-data .separator {
+    width: 50%;
+    margin: 15px auto;
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.069);
+    filter: drop-shadow(0 0 15px white) blur(0.5px);
 }

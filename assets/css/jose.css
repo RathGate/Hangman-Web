@@ -10,12 +10,12 @@
     0.5px 1px 2px 0px rgba(0,255,255,0.7),
     1px 2px 4px 0px rgba(0,255,255,0.7),
     1px 2px 8px 0px rgba(0,255,255,0.7);
-
+    animation: 4s infinite linear;   
 }
 
 .section-art {
-    border: 2px solid darkcyan;
     position: relative;
+    flex-grow: 1;
 }
 
 .section-art * {
