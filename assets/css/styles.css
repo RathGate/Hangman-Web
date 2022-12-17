@@ -26,7 +26,7 @@ html, body {
     color: #ececec;
     font-family: "Changa", sans-serif;
     line-height: 1.15;
-    background-image: url("/assets/background.jpg");
+    background-image: url("/assets/background.png");
     background-size: 100%;
 }
 body {
@@ -100,7 +100,8 @@ input[type="submit"] {
     width: fit-content;
 }
 
-.game-form input[type="text"] {
+
+input[type="text"] {
     background-color: transparent;
     padding: 3px 3px 5px;
     border: none;
@@ -113,11 +114,11 @@ input[type="submit"] {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     text-align: center;
 }
-.game-form input[type="text"]:hover {
+input[type="text"]:hover {
     border-color: #00eaff;
     filter: drop-shadow(0 0 15px #00eaff) drop-shadow(0 0 50px #00eaff);
 }
-.game-form input[type="text"]:focus-visible {
+input[type="text"]:focus-visible {
     border-color: #00eaff;
     filter: drop-shadow(0 0 15px #00eaff) drop-shadow(0 0 50px #00eaff);
 }
@@ -206,7 +207,8 @@ main > .separator {
 }
 
 .section-right form {
-    align-items: flex-end;
+    justify-content: center;
+    align-items: center;
 }
 
 .scoreboard {

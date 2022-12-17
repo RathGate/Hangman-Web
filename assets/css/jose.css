@@ -33,9 +33,11 @@
     width: 20%;
     top: 15%;
     left: 25%;
+    filter: blur(1px);
 }
 .bg-drawn {
     background-color: var(--color-beige);
+    filter: blur(1px);
 }
 
 #base {
