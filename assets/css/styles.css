@@ -1,5 +1,7 @@
 @import url("checkboxes.css");
 @import url("jose.css");
+@import url("front_page.css");
+@import url("responsive.css");
 
 @font-face {
     font-family: "Hemi Head";
@@ -9,9 +11,7 @@
 * {
     box-sizing: border-box;
 }
-h1, h2, p {
-    margin: 0;
-}
+
 a {
     color: #ececec;
     text-decoration: none;
@@ -20,73 +20,59 @@ a {
 html, body {
     margin: 0;
     padding: 0;
-    height: 100%;
+    min-height: 100vh;
     width: 100%;
     background-color: #131313;
     color: #ececec;
     font-family: "Changa", sans-serif;
     line-height: 1.15;
     background-image: url("/assets/background.png");
-    background-size: 100%;
+    background-attachment: fixed;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
+
 body {
     display: flex;
     align-items: center;
     justify-content: center;
 }
+
 main {
     border: 3px solid white;
     border-radius: 3px;
     backdrop-filter: blur(3px);
     background-color: rgba(0, 0, 0, 0.4);
-    width: 95%;
-    max-width: 1200px;
+    width: 100%;
+    margin: 25px;
+    max-width: 1150px;
+    display: flex;
+    padding: 50px;
     aspect-ratio: 2/1;
-    display: flex;
-}
-
-.form-container {
-    display: flex;
-    flex-grow: 1;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 20px;
-}
-
-.btn {
-    width: fit-content;
-}
-
-.to-find {
-    font-size: 20px;
-    letter-spacing: 10px;
-    margin-bottom: 10px;
-}
-
-.small-title {
-    font-weight: bold;
 }
 
 section  {
-    padding: 4%;
     display: flex;
     flex-direction: column;
-
     height: 100%;
 }
+
 .section-left {
     width: 60%;
-    gap: 4%;
 }
 
 .section-right {
-    padding: 6% 4%;
     flex: 1;
     transition: .5s;
 }
-input[type="submit"].hidden {
+
+.title {
+    font-family: "Hemi Head", sans-serif;
+    margin: 0;
+}
+
+.hidden {
     height: 0;
     width: 0%;
     opacity: 0;
@@ -100,9 +86,8 @@ input[type="submit"] {
     width: fit-content;
 }
 
-.game-form input[type="text"] {
+input[type="text"] {
     background-color: transparent;
-    padding: 3px 3px 5px;
     border: none;
     border-bottom: 2px solid white;
     outline: none;
@@ -112,28 +97,25 @@ input[type="submit"] {
     font-size: 16px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     text-align: center;
+    font-family: "Changa", sans-serif;
 }
-.game-form input[type="text"]:hover {
+input[type="text"]:hover {
     border-color: cyan;
 }
-.game-form input[type="text"]:focus-visible {
+input[type="text"]:focus-visible {
     border-color: cyan;
 }
-
+input[type="text"]::placeholder {
+    font-style: italic;
+    font-size: 14px;
+}
 .btns {
     display: flex;
     justify-content: center;
     gap: 10px;
 }
 
-form {
-    padding: 15px 0 25px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.gloss-effect {
+.btn-gloss {
     background-color: #c0c0c0;
     font-family: "Hemi Head";
     box-shadow:1px 1px 5px black,inset 1px 1px 2px #fbfbfb,0 0 2px #d8d8d8, inset 0 18px 0 #ededed;
@@ -156,72 +138,106 @@ form {
     width: 375px;
 }
 
-h1 {
-    font-family: "Hemi Head", sans-serif;
-    font-size: 65px;
-    margin-bottom: 30px;
-}
-h2 {
-    font-family: "Hemi Head", sans-serif;
-    font-size: 45px;
-    text-align: center;
-    position: relative;
-}
-h3 {
-    font-family: "Hemi Head", sans-serif;
-    font-size: 24px;
-    margin: 0;
+.section-right input[type="submit"] {
+    justify-content: flex-end;
 }
 
-.section-left p {
-    font-size: 24px;
+.to-find {
+    font-size: 20px;
+    letter-spacing: 10px;
+    margin-bottom: 10px;
 }
 
-.section-right .separation {
-    margin: 10px 0;
-    height: 3px;
-    width: 100%;
-    background-color: #ff00ff;
-    filter: drop-shadow(0 0 15px #ff00ff) drop-shadow(0 0 50px #ff00ff);
-    position: relative;
-}
-.section-right .separation::after {
-    content: "";
-    position: absolute;
-    bottom: -10px;
-    left: 0;
-    height: 3px;
-    width: 100%;
-    background: linear-gradient(to right, transparent, #ff00ff);
-    filter: drop-shadow(0 0 15px #ff00ff) drop-shadow(0 0 50px #ff00ff);
+.small-title {
+    font-weight: bold;
 }
 
-main > .separator {
-    height: 80%;
-    width: 2px;
-    margin: auto;
-    background-color: white;
+/* !RESPONSIVE */
+
+@media screen and (max-width: 1200px) {
+    main {
+        max-width: calc(1024px - 50px);
+    }
+    h1 {
+        font-size: 55px;
+        margin-bottom: 20px;
+    }
+    .section-left p {
+        font-size: 20px;
+    }
+    .btn-gloss, .difficulty label {
+        font-size: 16px;
+    }
+    .scoreboard {
+        padding: 0px 0;
+    }
+    .scoreboard.title {
+        font-size: 42px;
+    }
+    h3 {
+        font-size: 20px;
+    }
+    .scoreboard-data * {
+        font-size: 17px;
+    }
 }
 
-.section-right form {
-    align-items: flex-end;
+@media screen and (max-width: 1024px) {
+    main {
+        margin: 100px 50px;
+        max-width: 600px;
+        flex-direction: column;
+    }
+    h1 {
+        margin-bottom: 30px;
+    }
+    .section-left, .section-right {
+        width: 100%;
+        height: fit-content;
+    }
+    .section-left p {
+        margin-bottom: 45px;
+    }
+    .scoreboard {
+        padding: 20px 0;
+    }
+    .scoreboard > *:not(.header) {
+        width: 95%;
+        margin: auto;
+    }
+    .scoreboard .separation {
+        margin-bottom: 20px;
+    }
+    main > .separator {
+        height: 0px;
+        width: 0px;
+        margin: 15px 0;
+    }
 }
 
-.scoreboard {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
+@media screen and (max-width: 770px) {
+    main {
+        margin: 50px;
+        flex-direction: column;
+        max-width: 500px;
+    }
 }
 
-.scoreboard-data * {
-    margin: 5px 0;
-    font-size: 18px;
+@media screen and (max-width: 580px) {
+    main {
+        margin: 5px;
+        padding: 25px;
+    }
 }
 
-.scoreboard-data .separator {
-    width: 50%;
-    margin: 15px auto;
-    height: 1px;
-    background-color: rgba(255, 255, 255, 0.205);
-    filter: drop-shadow(0 0 15px white)
+.section-right input[type="text"] {
+    text-align: left;
+}
+.section-right input[type="text"]:hover {
+    filter: drop-shadow(0 0 15px #ff00ff);
+    border-color: #ff00ff;
+}
+.section-right input[type="text"]:focus-visible {
+    filter: drop-shadow(0 0 15px #ff00ff);
+    border-color: #ff00ff;
 }

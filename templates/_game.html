@@ -8,13 +8,13 @@
     {{ if and (ne .FinalWord .Word) (ne .Attempts 0) }}
     <form method="POST">
         <input id="suggestion" type="text" name="suggestion" placeholder="Suggest something !" autofocus>
-        <input class="hidden" id="submit-btn" class="btn gloss-effect" type="submit">
+        <input class="hidden" id="submit-btn" class="btn btn-gloss" type="submit">
     </form>
     {{ end }}
     <div class="btns">
-        <a href="/"><div class="btn gloss-effect">Back</div></a>
+        <a href="/"><div class="btn btn-gloss">Back</div></a>
         {{ if and (ne .FinalWord .Word) (ne .Attempts 0) }}
-        <label for="submit-btn"><div class="btn gloss-effect">Submit</div></label>
+        <label for="submit-btn"><div class="btn btn-gloss">Submit</div></label>
         {{ end }}
     </div>
 </div>
