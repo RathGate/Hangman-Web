@@ -6,13 +6,13 @@
     <img class="results" src="/assets/lost.jpg">
     {{ end }}
 
-    <div class="to-find">The word was {{ .FinalWord }}</div>
-    <div><span class="small-title">USED LETTERS:</span> {{ .UsedToString }}</div>
-    <div><span class="small-title">ATTEMPTS LEFT:</span> {{ .Attempts }}</div>
+    <div class="to-find">THE WORD WAS {{ .FinalWord }}</div>
+    <div><span class="small-title">USED LETTERS: </span>{{ .UsedToString }}</div>
+    <div><span class="small-title">ATTEMPTS LEFT: </span>{{ .Attempts }}</div>
 
     <div class="btns">
-        <a href="/"><div class="btn glosseffect">MAIN MENU</div></a>
-        <div id="restart-btn" class="btn glosseffect">NEW GAME</div>
+        <a href="/"><div class="btn gloss-effect">MAIN MENU</div></a>
+        <div id="restart-btn" class="btn gloss-effect">NEW GAME</div>
     </div>
 
 {{ end }}

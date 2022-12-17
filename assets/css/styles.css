@@ -1,6 +1,11 @@
 @import url("checkboxes.css");
 @import url("jose.css");
 
+@font-face {
+    font-family: "Hemi Head";
+    src: url(/assets/fonts/hemi_head.ttf);
+}
+
 * {
     box-sizing: border-box;
 }
@@ -17,30 +22,52 @@ html, body {
     width: 100%;
     background-color: #131313;
     color: #ececec;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: "Changa", sans-serif;
+
     background-image: url("/assets/background.jpg");
     background-size: 100%;
 }
+
 body {
     display: flex;
     align-items: center;
     justify-content: center;
 }
 main {
+    border-radius: 3px;
+    backdrop-filter: blur(3px);
+    background-color: rgba(0, 0, 0, 0.33);
     width: 95%;
-    max-width: 1000px;
+    max-width: 1200px;
     aspect-ratio: 2/1;
     display: flex;
 }
+
 section {
-    border: 2px solid red;
     height: 100%;
     width: 50%;
 }
 
+h1 {
+    font-family: "Hemi Head", sans-serif;
+    font-size: 65px;
+    margin-bottom: 30px;
+}
+
+h2 {
+    font-family: "Hemi Head", sans-serif;
+    font-size: 45px;
+    text-align: center;
+    position: relative;
+}
+h3 {
+    font-family: "Hemi Head", sans-serif;
+    font-size: 24px;
+    margin: 0;
+}
+
 .btn {
-    background-color: #c0c0c0;
-    box-shadow:1px 1px 5px black,inset 1px 1px 2px #fbfbfb,0 0 2px #d8d8d8, inset 0 18px 0 #ededed;
+    width: fit-content;
 }
 
 .to-find {
@@ -107,23 +134,21 @@ form {
     gap: 10px;
 }
 
-.glosseffect {
-    text-shadow:0 0 2px #000;
+.gloss-effect {
+    background-color: #c0c0c0;
+    font-family: "Hemi Head";
+    box-shadow:1px 1px 5px black,inset 1px 1px 2px #fbfbfb,0 0 2px #d8d8d8, inset 0 18px 0 #ededed;
+    text-shadow:0 0 5px #000;
     border-radius:7px;
-    color:#FFF!important;
+    color:white;
     cursor:pointer;
-    font-size:15px!important;
-    font-weight:700!important;
+    font-size:18px;
+    font-weight:700;
     line-height:25px;
-    text-decoration:none!important;
-    -webkit-touch-callout:none;
-    -webkit-user-select:none;
-    -khtml-user-select:none;
-    -moz-user-select:none;
-    -ms-user-select:none;
     user-select:none;
     margin:4px;
     padding:4px 14px;
+    letter-spacing: 2px;
 }
 
 .results {

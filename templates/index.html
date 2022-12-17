@@ -5,6 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Changa&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../assets/css/styles.css">
     <title>Home | Hangman Web</title>
 </head>
@@ -28,14 +31,14 @@
             </div>
             <input class="hidden" type="submit" id="diff-submit">
         </form>
-        <label for="diff-submit"><div class="btn glosseffect">Play</div></label>
+        <label for="diff-submit"><div class="btn gloss-effect">PLAY</div></label>
         {{ else }}
-        <a href="/hangman"><div class="btn glosseffect">Resume</div></a>
+        <a href="/hangman"><div class="btn gloss-effect">RESUME</div></a>
         <form action="/" method="POST" style="height: 0; display:none;">
             <input type="hidden" name="reset" value="reset">
             <input type="submit" class="hidden" id="reset-submit">
         </form>
-        <label for="reset-submit"><div id="reset-btn" class="btn glosseffect">Quit Game</div></label>
+        <label for="reset-submit"><div id="reset-btn" class="btn gloss-effect">QUIT GAME</div></label>
         {{end}}
     </section>
     <section class="scoreboard">
@@ -44,7 +47,7 @@
             <label for="username">USERNAME:
                 <input id="username" name="username" type="text">
             </label>
-            <input type="submit" value="LOG IN" class="btn glosseffect">
+            <input type="submit" value="LOG IN" class="btn gloss-effect">
         </form>
 
         {{ else }}
@@ -52,7 +55,7 @@
         {{ if eq .GameData.FinalWord ""}}
         <form action="/" method="POST">
             <input type="hidden" name="logout" value="logout">
-            <input type="submit" value="LOG OUT" class="btn glosseffect">
+            <input type="submit" value="LOG OUT" class="btn gloss-effect">
         </form>
         {{ end }}
         {{ end }}

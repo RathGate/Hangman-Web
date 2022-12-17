@@ -1,7 +1,7 @@
 {{ define "scoreboard" }}
 {{ if ne .Name "" }}
-<h2>Logged as <span id="playername">{{ .Name }}</span></h2>
-<h3>Game Mode: <span id="diffname">{{ .CurrentDifficulty.Name }}</span></h3>
+<h2>LOGGED AS <span id="playername">{{ .Name }}</span></h2>
+<h3>GAME MODE: <span id="diffname">{{ .CurrentDifficulty.Name }}</span></h3>
 <div>CURRENT WIN COUNT: <span id="winstreak">{{ .CurrentDifficulty.CurrentWinStreak }}</span></div>
 <div>LIVES SAVED: <span id="wincount">{{ .CurrentDifficulty.WinCount }}</span></div>
 <div>DEATHS CAUSED: <span id="losecount">{{ .CurrentDifficulty.LoseCount }}</span></div>
