@@ -6,6 +6,7 @@ import (
 	"hangman-web/packages/session"
 	"log"
 	"net/http"
+	"text/template"
 )
 
 // Player struct stores all the information linked to the current player if logged in.
