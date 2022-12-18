@@ -1,7 +1,7 @@
-@import url("checkboxes.css");
+@import url("inputs.css");
+@import url("home_page.css");
+@import url("game_page.css");
 @import url("jose.css");
-@import url("front_page.css");
-@import url("responsive.css");
 
 @font-face {
     font-family: "Hemi Head";
@@ -58,18 +58,14 @@ section  {
     height: 100%;
 }
 
-.section-left, .section-game {
-    width: 60%;
-}
-
-.section-right {
-    flex: 1;
-    transition: .5s;
-}
 
 .title {
     font-family: "Hemi Head", sans-serif;
     margin: 0;
+}
+
+.small-title {
+    font-weight: bold;
 }
 
 .hidden {
@@ -80,189 +76,6 @@ section  {
     display: none;
 }
 
-input[type="submit"] {
-    text-decoration: none;
-    border: none;
-    width: fit-content;
-}
-
-input[type="text"] {
-    background-color: transparent;
-    border: none;
-    border-bottom: 2px solid white;
-    outline: none;
-    color: white;
-    position: relative;
-    transition: .25s ease;
-    font-size: 20px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    text-align: center;
-    font-family: "Changa", sans-serif;
-}
-input[type="text"]:hover {
-    filter: drop-shadow(0 0 15px #ff00ff);
-    border-color: #ff00ff;
-}
-input[type="text"]:focus-visible {
-    filter: drop-shadow(0 0 15px #ff00ff);
-    border-color: #ff00ff;
-}
-input[type="text"]::placeholder {
-    font-style: italic;
-    font-size: 14px;
-}
-.btns {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-}
-
-.btn-gloss {
-    background-color: #c0c0c0;
-    font-family: "Hemi Head";
-    box-shadow:1px 1px 5px black,inset 1px 1px 2px #fbfbfb,0 0 2px #d8d8d8, inset 0 18px 0 #ededed;
-    text-shadow:0 0 5px #000;
-    border-radius:7px;
-    color:white;
-    cursor:pointer;
-    font-size:18px;
-    font-weight:700;
-    line-height:25px;
-    user-select:none;
-    margin:4px;
-    padding:4px 14px;
-    letter-spacing: 2px;
-}
-
-.section-right input[type="submit"] {
-    justify-content: flex-end;
-}
-
-.to-find {
-    font-size: 35px;
-    letter-spacing: 5px;
-}
-
-.small-title {
-    font-weight: bold;
-}
-
-.section-right input[type="text"] {
-    text-align: left;
-}
-
-.section-game {
-    z-index: 5;
-    padding-top: 10px;
-}
-.attempts, .difficulty {
-    font-size: 30px;
-}
-.difficulty {
-    margin-bottom: 15px;
-    font-family: "Hemi Head";
-}
-.used-letters-container {
-    font-size: 25px;
-    display: flex;
-    flex-direction: column;
-}
-.used-letters {
-    width: calc(100% - 30px);
-    margin: 5px 15px;
-    display: block;
-    width: fit-content;
-    position: relative;
-    padding: 2px 10px;
-}
-.decoration {
-    position: absolute;
-    content: "";
-    height: 10px;
-    width: 2px;
-    background-color: cyan;
-    filter: drop-shadow(0 0 15px cyan)
-}
-.decoration.up-left {
-    top: 0;
-    left: 0;
-}
-.decoration.down-right {
-    bottom: -2px;
-    right: -2px;
-}
-.decoration::after {
-    content: "";
-    position: absolute;
-    width: 10px;
-    height: 2px;
-    background-color: cyan;
-    filter: drop-shadow(0 0 15px cyan)
-}
-.decoration.up-left::after {
-    top: 0;
-    left: 0;
-}
-.decoration.down-right::after {
-    bottom: 0;
-    right: 0;
-}
-
-.idk {
-    opacity: .3;
-    font-size: 15px;
-    font-style: italic;
-}
-
-.enviederirmou {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    padding: 20px 0;
-    gap: 20px;
-}
-.game-form input[type="text"] {
-    margin-bottom: 10px;
-}
-
-.game .separation {
-    height: 100%;
-    width: 3px;
-    background-color: #ff00ff;
-    filter: drop-shadow(0 0 15px #ff00ff);
-    position: relative;
-}
-.game .separation::after {
-    content: "";
-    position: absolute;
-    right: -10px;
-    top: 0;
-    width: 3px;
-    height: 100%;
-    background: linear-gradient(0deg, transparent, #ff00ff);
-    filter: drop-shadow(0 0 15px #ff00ff) drop-shadow(0 0 50px #ff00ff);
-}
-
-.results p {
-    font-size: 20px;
-    margin: 0;
-    color: cyan;
-    filter: drop-shadow(0 0 15px cyan);
-    margin-bottom: 15px;
-}
-.results h1 {
-    margin-bottom: 0;
-}
-
-.game-data {
-    padding-top: 15px;
-}
-
-
-.section-art {
-    margin-left: 20px;
-    margin-right: -30px;
-}
 
 /* !RESPONSIVE */
 
@@ -422,15 +235,10 @@ input[type="text"]::placeholder {
     .section-game {
         padding-top: 15px;
     }
-    .enviederirmou {
+    .lower {
         padding-top: 30px;
     }
     h1.results-title {
         font-size: 40px;
     }
-
-}
-
-#ratio {
-    font-weight: bold;
 }

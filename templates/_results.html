@@ -17,10 +17,10 @@
             <span class="used-letters">
                 <div class="decoration up-left"></div>
                 <div class="decoration down-right"></div>
-                {{if eq .GameData.UsedToString ""}}<span class="idk">Nothing to see here !</span>{{else}}{{ .GameData.UsedToString }}{{end}}</span>
+                {{if eq .GameData.UsedToString ""}}<span class="used-placeholder">Nothing to see here !</span>{{else}}{{ .GameData.UsedToString }}{{end}}</span>
         </div>
     </div>
-    <div class="enviederirmou">
+    <div class="lower">
         <div class="to-find">{{ .GameData.FinalWord }}</div>
 
         <form action="/hangman" method="POST" class="hidden">

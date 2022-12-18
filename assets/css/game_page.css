@@ -1,0 +1,140 @@
+/* ?LEFT PART OF THE PAGE */
+.section-game {
+    z-index: 5;
+    padding-top: 10px;
+    width: 60%;
+}
+
+.game .small-title {
+    font-family: "Hemi Head";
+}
+
+    /* *UPPER PART */
+
+.game-data {
+    padding-top: 15px;
+}
+
+.attempts, .difficulty {
+    font-size: 30px;
+}
+
+.difficulty {
+    margin-bottom: 15px;
+    font-family: "Hemi Head";
+}
+
+.used-letters-container {
+    font-size: 25px;
+    display: flex;
+    flex-direction: column;
+}
+
+.used-letters {
+    width: calc(100% - 30px);
+    margin: 5px 15px;
+    display: block;
+    width: fit-content;
+    position: relative;
+    padding: 2px 10px;
+}
+
+.decoration {
+    position: absolute;
+    content: "";
+    height: 10px;
+    width: 2px;
+    background-color: cyan;
+    filter: drop-shadow(0 0 15px cyan)
+}
+.decoration.up-left {
+    top: 0;
+    left: 0;
+}
+.decoration.down-right {
+    bottom: -2px;
+    right: -2px;
+}
+.decoration::after {
+    content: "";
+    position: absolute;
+    width: 10px;
+    height: 2px;
+    background-color: cyan;
+    filter: drop-shadow(0 0 15px cyan)
+}
+.decoration.up-left::after {
+    top: 0;
+    left: 0;
+}
+.decoration.down-right::after {
+    bottom: 0;
+    right: 0;
+}
+
+.used-placeholder {
+    opacity: .3;
+    font-size: 15px;
+    font-style: italic;
+}
+
+    /* *LOWER PART */
+
+.lower {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 20px 0;
+    gap: 20px;
+}
+
+.to-find {
+    font-size: 35px;
+    letter-spacing: 5px;
+}
+
+.game-form input[type="text"] {
+    margin-bottom: 10px;
+}
+
+    /* *RESULTS HEADER */
+
+.results h1 {
+    margin-bottom: 0;
+}
+    
+.results p {
+    font-size: 20px;
+    margin: 0;
+    color: cyan;
+    filter: drop-shadow(0 0 15px cyan);
+    margin-bottom: 15px;
+}
+
+/* --------------------------------------------------------- */
+
+/* ?MIDDLE */
+
+.game .separation {
+    height: 100%;
+    width: 3px;
+    background-color: #ff00ff;
+    filter: drop-shadow(0 0 15px #ff00ff);
+    position: relative;
+}
+.game .separation::after {
+    content: "";
+    position: absolute;
+    right: -10px;
+    top: 0;
+    width: 3px;
+    height: 100%;
+    background: linear-gradient(0deg, transparent, #ff00ff);
+    filter: drop-shadow(0 0 15px #ff00ff) drop-shadow(0 0 50px #ff00ff);
+}
+
+/* --------------------------------------------------------- */
+
+/* ?RIGHT PART OF THE PAGE */
+
+    /* !SEE "jose.css" */

@@ -9,7 +9,6 @@
         <p class="scoreboard-intro">ENTER YOUR NAME HERE BEFORE STARTING A NEW GAME TO TRACK YOUR SESSION DATA!</p>
         {{ if eq .GameData.FinalWord "" }}
         <form action="/" method="POST">
-            
             <div class="log-container">
                 <input id="username" name="username" type="text" placeholder="Enter your name here !" maxlength="20">
                 <input type="submit" value="LOG IN" class="btn btn-gloss">

@@ -1,0 +1,92 @@
+/* ?RADIO BUTTONS */
+
+.difficulty input[type="radio"] {
+    display: none;
+}
+
+.difficulty label {
+    color: #ff00ff;
+    border: 4px solid #ff00ff;
+    border-radius:7px;
+    padding: 5px 15px;
+    cursor: pointer;
+    filter: drop-shadow(0 0 15px #ff00ff) drop-shadow(0 0 50px #ff00ff);
+    transition: .4s;
+    font-size: 18px;
+    user-select: none;
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin: 0 2px;
+}
+
+.difficulty input[type="radio"]:checked + label {
+    color: white;
+    background-color: #ff00ff;
+    filter: drop-shadow(0 0 20px #ff00ff);
+}
+/* --------------------------------------------------------- */
+
+/* ?TYPE TEXT */
+
+input[type="text"] {
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid white;
+    outline: none;
+    color: white;
+    position: relative;
+    transition: .25s ease;
+    font-size: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: center;
+    font-family: "Changa", sans-serif;
+}
+input[type="text"]:hover {
+    filter: drop-shadow(0 0 15px #ff00ff);
+    border-color: #ff00ff;
+}
+input[type="text"]:focus-visible {
+    filter: drop-shadow(0 0 15px #ff00ff);
+    border-color: #ff00ff;
+}
+input[type="text"]::placeholder {
+    font-style: italic;
+    font-size: 14px;
+}
+
+/* --------------------------------------------------------- */
+
+/* ?TYPE SUBMIT */
+
+input[type="submit"] {
+    text-decoration: none;
+    border: none;
+    width: fit-content;
+}
+
+/* --------------------------------------------------------- */
+
+/* ?BUTTONS */
+
+.btns {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.btn-gloss {
+    background-color: #c0c0c0;
+    font-family: "Hemi Head";
+    box-shadow:1px 1px 5px black,inset 1px 1px 2px #fbfbfb,0 0 2px #d8d8d8, inset 0 18px 0 #ededed;
+    text-shadow:0 0 5px #000;
+    border-radius:7px;
+    color:white;
+    cursor:pointer;
+    font-size:18px;
+    font-weight:700;
+    line-height:25px;
+    user-select:none;
+    margin:4px;
+    padding:4px 14px;
+    letter-spacing: 2px;
+}

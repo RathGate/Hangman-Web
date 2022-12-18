@@ -1,4 +1,8 @@
-/* LEFT PART OF THE PAGE */
+/* ?LEFT PART OF THE PAGE */
+
+.section-left {
+    width: 60%;
+}
 
 h1 {
     font-size: 65px;
@@ -25,7 +29,9 @@ h1 {
     margin: 15px 0 0;
 }
 
-/* MIDDLE */
+/* --------------------------------------------------------- */
+
+/* ?MIDDLE */
 
 main > .separator {
     height: 100%;
@@ -34,7 +40,14 @@ main > .separator {
     background-color: white;
 }
 
-/* RIGHT PART OF THE PAGE */
+/* --------------------------------------------------------- */
+
+/* ?RIGHT PART OF THE PAGE */
+
+.section-right {
+    flex: 1;
+    transition: .5s;
+}
 
 .scoreboard {
     padding: 20px 0;
@@ -99,6 +112,20 @@ h3.small-title {
     align-items: center;
     gap: 15px;
 }
+
+
 .scoreboard input[type="text"] {
     width: 250px;
+}
+
+.section-right input[type="text"] {
+    text-align: left;
+}
+
+.section-right input[type="submit"] {
+    justify-content: flex-end;
+}
+
+#ratio {
+    font-weight: bold;
 }

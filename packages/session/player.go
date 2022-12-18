@@ -21,6 +21,10 @@ type GameModeData struct {
 // *----------------------- LOGIN / LOGOUT -----------------------* //
 
 func (p *Player) Login(name string) {
+	if len(name) > 20 {
+		name = "Nice try :)"
+	}
+
 	p.Name = name
 	p.IsLoggedIn = true
 	p.InitDifficulty()

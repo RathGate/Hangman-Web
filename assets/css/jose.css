@@ -4,22 +4,12 @@
     --stick-size: 4px;
 }
 
-.neon {
-    text-shadow:
-            0 0 7px #fff,
-            0 0 10px #fff,
-            0 0 21px #fff,
-            0 0 42px #0fa,
-            0 0 82px #0fa,
-            0 0 92px #0fa,
-            0 0 102px #0fa,
-            0 0 151px #0fa;
-}
-
 .section-art {
     position: relative;
     flex-grow: 1;
     aspect-ratio: 1;
+    margin-left: 20px;
+    margin-right: -30px;
 }
 
 .section-art * {
