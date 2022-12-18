@@ -3,6 +3,8 @@
 Web version of the [Hangman Game](https://github.com/RathGate/Hangman-Go) written in Golang, based on [these instructions](https://github.com/Lyon-Ynov-Campus/YTrack/tree/master/subjects/hangman/hangman-web).
 Authors are, once again, [Eva Chibane](https://github.com/evzs) and [Marianne Corbel](https://github.com/RathGate).
 
+**HOW WE ORGANISED OUR WORK:** [HERE (GDrive)](https://drive.google.com/file/d/17SgibsAbYrRuBQR-Zo6qQP6UNfq2dp8L/view?usp=sharing)
+
 ## About
 
 **Disclaimer:** This exercise must be submitted for notation before the **19th of December 2022**. As always, it is possible to see one or several commits after this date (notably if we discover issues in the code), but if any, they must not be taken into consideration by the examiner.
@@ -15,7 +17,7 @@ The goal of the exercice is to provide a web interface for [this Hangman command
  - Front-end: HTML, CSS, JS (mostly used to send minor
    ajax requests that would not require to reload the entire page).
 
-**NOTE:** The game has been tested mainly on Google Chrome, Mozilla Firefox, Edge and Opera, all of them in their latest version, and should appear totally responsive. If you encounter any trouble, being with the game or the website itself, tell us and we'll try to fix the issue as soon as possible.
+**NOTE:** The game has been tested mainly on Google Chrome, Mozilla Firefox, and Edge, all of them in their latest version, and should appear totally responsive. If you encounter any trouble, being with the game or the website itself, tell us and we'll try to fix the issue as soon as possible.
 
 ## How to use the program
 
