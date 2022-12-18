@@ -27,6 +27,7 @@
     width: 20%;
     top: 15%;
     left: 25%;
+    animation: neon 2s alternate-reverse infinite;
 }
 .bg-drawn {
     background-color: var(--color-beige);
@@ -126,6 +127,16 @@
     display: none;
     visibility: hidden;
     opacity: 0;
+    
+}
+
+@keyframes neon {
+    0% {
+        filter: drop-shadow(0 0 10px cyan)
+    }
+    100% {
+        filter: drop-shadow(0 0 15px #ff00ff)
+    }
 }
 
 .visible {
