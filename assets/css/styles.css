@@ -241,4 +241,7 @@ section  {
     h1.results-title {
         font-size: 40px;
     }
+    .difficulty label {
+        font-size: 15px;
+    }
 }
