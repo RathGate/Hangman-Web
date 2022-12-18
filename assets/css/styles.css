@@ -308,7 +308,7 @@ input[type="text"]::placeholder {
     }
 }
 
-.game h1 {
+.game h1:not(.results-title) {
     margin-bottom: 15px;
 }
 
