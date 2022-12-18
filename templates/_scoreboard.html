@@ -39,9 +39,9 @@
 
 {{ define "scoreboard-data" }}
     <div>WIN STREAK: <span id="winstreak">{{ .CurrentDifficulty.CurrentWinStreak }}</span></div>
-    <div>MAX WIN STREAK: <span id="winstreak">{{ .CurrentDifficulty.MaxWinStreak }}</span></div>
+    <div>MAX WIN STREAK: <span id="maxwinstreak">{{ .CurrentDifficulty.MaxWinStreak }}</span></div>
     <div class="separator"></div>
     <div>LIVES SAVED: <span id="wincount">{{ .CurrentDifficulty.WinCount }}</span></div>
     <div>DEATHS CAUSED: <span id="losecount">{{ .CurrentDifficulty.LoseCount }}</span></div>
-    <div>WIN RATE: <span id="ratio">0%</span></div>
+    <div>WIN RATE: <span id="ratio">0</span>%</div>
 {{ end }}

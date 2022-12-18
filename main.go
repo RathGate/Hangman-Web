@@ -62,6 +62,7 @@ func hangmanHandler(w http.ResponseWriter, r *http.Request) {
 
 	if r.Method == "POST" {
 		if difficulty := r.FormValue("difficulty"); difficulty != "" {
+			fmt.Println(difficulty)
 			if difficulty == "current" {
 				difficulty = data.CurrentDifficulty
 			}

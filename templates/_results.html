@@ -9,9 +9,6 @@
         {{ end }}
     </div>
 
-
-    
-
     <div class="game-data">
         <div class="difficulty"><span class="small-title">DIFFICULTY: </span>{{ .CurrentDifficulty }}</div>
         <div class="attempts"><span id="attempts" class="small-title">ATTEMPTS LEFT: </span>{{ .GameData.Attempts }}</div>
@@ -26,11 +23,15 @@
     <div class="enviederirmou">
         <div class="to-find">{{ .GameData.FinalWord }}</div>
 
+        <form action="/hangman" method="POST" class="hidden">
+            <input type="hidden" name="difficulty" value="{{ .CurrentDifficulty }}">
+            <input type="submit" id="restart-submit">
+        </form>
+
         <div class="btns">
             <a href="/"><div class="btn btn-gloss">MAIN MENU</div></a>
-            <div id="restart-btn" class="btn btn-gloss">NEW GAME</div>
+            <label for="restart-submit"><div class="btn btn-gloss">NEW GAME</div></label>
         </div>
     </div>
-
 
 {{ end }}

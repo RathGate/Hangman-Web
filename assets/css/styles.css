@@ -431,3 +431,6 @@ input[type="text"]::placeholder {
 
 }
 
+#ratio {
+    font-weight: bold;
+}
