@@ -1,22 +1,34 @@
 {{ define "game" }}
+<h1 class="title">_SAVE JOSE !_</h1>
+<div class="game-data">
+    <div class="difficulty"><span class="small-title">DIFFICULTY: </span>{{ .CurrentDifficulty }}</div>
+    <div class="attempts"><span id="attempts" class="small-title">ATTEMPTS LEFT: </span>{{ .GameData.Attempts }}</div>
+    <div class="used-letters-container">
+        <span class="small-title">USED LETTERS:</span>
+        <span class="used-letters">
+            <div class="decoration up-left"></div>
+            <div class="decoration down-right"></div>
+            {{if eq .GameData.UsedToString ""}}<span class="idk">Nothing yet...</span>{{else}}{{ .GameData.UsedToString }}{{end}}</span>
+    </div>
+</div>
 
-<div class="to-find">{{ .Word }}</div>
-<div><span class="small-title">USED LETTERS:</span> {{ .UsedToString }}</div>
-<div><span class="small-title">ATTEMPTS LEFT:</span> {{ .Attempts }}</div>
-
-<div class="game-form">
-    {{ if and (ne .FinalWord .Word) (ne .Attempts 0) }}
+<div class="enviederirmou">
+    <div class="to-find">{{ .GameData.Word }}</div>
+    <div class="game-form">
+    {{ if and (ne .GameData.FinalWord .GameData.Word) (ne .GameData.Attempts 0) }}
     <form method="POST">
         <input id="suggestion" type="text" name="suggestion" placeholder="Suggest something !" autofocus>
-        <input class="hidden" id="submit-btn" class="btn" type="submit">
+        <input class="hidden" id="submit-btn" class="btn btn-gloss" type="submit">
     </form>
     {{ end }}
     <div class="btns">
-        <a href="/"><div class="btn">Back</div></a>
-        {{ if and (ne .FinalWord .Word) (ne .Attempts 0) }}
-        <label for="submit-btn"><div class="btn">Submit</div></label>
+        <a href="/"><div class="btn btn-gloss">Back</div></a>
+        {{ if and (ne .GameData.FinalWord .GameData.Word) (ne .GameData.Attempts 0) }}
+        <label for="submit-btn"><div class="btn btn-gloss">Submit</div></label>
         {{ end }}
     </div>
 </div>
+
+
 
 {{ end }}

@@ -1,8 +1,47 @@
-{{ define "scoreboard" }} 
-    {{ if ne .Name "" }}
-    <h2>Logged as <span id="playername">{{ .Name }}</span></h2>
-    <h3>Game Mode: <span id="diffname">{{ .CurrentDifficulty.Name }}</span></h3>
-    <div>Current Win Streak: <span id="winstreak">{{ .CurrentDifficulty.CurrentWinStreak }}</span></div>
-    <div>Game Count: <span id="wincount">{{ .CurrentDifficulty.WinCount }}</span> / <span id="losecount">{{ .CurrentDifficulty.LoseCount }}</span></div>
+{{ define "scoreboard" }}
+<div class="scoreboard">
+    <div class="header">
+        <h2 class="title scoreboard-title">_SCOREBOARD_</h2>
+        <div class="separation"></div>
+    </div>
+
+    {{ if eq .Player.Name "" }}
+        <p class="scoreboard-intro">ENTER YOUR NAME HERE BEFORE STARTING A NEW GAME TO TRACK YOUR SESSION DATA!</p>
+        {{ if eq .GameData.FinalWord "" }}
+        <form action="/" method="POST">
+            
+            <div class="log-container">
+                <input id="username" name="username" type="text" placeholder="Enter your name here !" maxlength="20">
+                <input type="submit" value="LOG IN" class="btn btn-gloss">
+            </div>
+            
+        </form>
+        {{end}}
+
+    {{ else }}
+        <div class="scoreboard-info">
+            <h3 class="small-title"><span>PLAYER:</span> <span id="playername">{{ .Player.Name }}</span></h2>
+            <h3 class="small-title"><span>MODE:</span> <span id="diffname">{{ .Player.CurrentDifficulty.Name }}</span></h3>
+        </div>
+        <div class="scoreboard-data">
+            {{ template "scoreboard-data" .Player}}
+        </div>
+        {{ if eq .GameData.FinalWord ""}}
+        <form action="/" method="POST">
+            <input type="hidden" name="logout" value="logout">
+            <input type="submit" value="LOG OUT" class="btn btn-gloss">
+        </form>
+        {{ end }}
+
     {{ end }}
+</div>
+{{ end }}
+
+{{ define "scoreboard-data" }}
+    <div>WIN STREAK: <span id="winstreak">{{ .CurrentDifficulty.CurrentWinStreak }}</span></div>
+    <div>MAX WIN STREAK: <span id="maxwinstreak">{{ .CurrentDifficulty.MaxWinStreak }}</span></div>
+    <div class="separator"></div>
+    <div>LIVES SAVED: <span id="wincount">{{ .CurrentDifficulty.WinCount }}</span></div>
+    <div>DEATHS CAUSED: <span id="losecount">{{ .CurrentDifficulty.LoseCount }}</span></div>
+    <div>WIN RATE: <span id="ratio">0</span>%</div>
 {{ end }}

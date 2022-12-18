@@ -5,59 +5,52 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Changa&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../assets/css/styles.css">
-    <script src="../assets/js/script.js"></script>
     <title>Home | Hangman Web</title>
 </head>
 <body>
-    <div class="game-info">
+<main class="home">
+    <section class="section-left">
+        <h1 class="title">TO HANG OR NOT TO HANG</h1>
+        <p>You've been assigned the responsibility of saving José's life.
+            With each attempt at guessing the letters present in the hidden word, his fate will be determined.
+            Think wisely.
+        </p>
+        <div class="vt-container difficulty-form">
         {{ if eq .GameData.FinalWord "" }}
-        <form id="difficulty-form" action="/hangman" method="POST">
-            <label class="radio-container" for="diff-easy">
-                <input id="diff-easy" type="radio" name="difficulty" value="easy" {{if eq .CurrentDifficulty "easy"}}checked{{end}}>
-                <span class="radio-checkmark"></span>
-                <span>EASY</span>
-            </label>
-            <label class="radio-container" for="diff-medium">
-                <input id="diff-medium" type="radio" name="difficulty" value="medium" {{if eq .CurrentDifficulty "medium"}}checked{{end}}>
-                <span class="radio-checkmark"></span>
-                <span>MEDIUM</span>
-            </label>
-            <label class="radio-container" for="diff-hard">
-                <input id="diff-hard" type="radio" name="difficulty" value="hard" {{if eq .CurrentDifficulty "hard"}}checked{{end}}>
-                <span class="radio-checkmark"></span>
-                <span>HARD</span>
-            </label>
-            <input class="hidden" type="submit" id="diff-submit">
-        </form>
-        <label for="diff-submit"><div class="btn">Play</div></label>
+            <form id="difficulty-form" action="/hangman" method="POST">
+                <div class="difficulty">
+                    <input id="easy" type="radio" name="difficulty" value="easy" 
+                    {{if eq .CurrentDifficulty "easy" }}checked{{end}}>
+                    <label for="easy">EASY</label>
+                    <input id="medium" type="radio" name="difficulty" value="medium"
+                    {{if eq .CurrentDifficulty "medium" }}checked{{end}}>
+                    <label for="medium">MEDIUM</label>
+                    <input id="hard" type="radio" name="difficulty" value="hard" 
+                    {{if eq .CurrentDifficulty "hard" }}checked{{end}}>
+                    <label for="hard">HARD</label>
+                </div>
+                <input class="hidden" type="submit" id="difficulty-submit">
+            </form>
+            <label for="difficulty-submit"><div class="btn-gloss">PLAY</div></label>
         {{ else }}
-        <a href="/hangman"><div class="btn">Resume</div></a>
-        <form action="/" method="POST" style="height: 0; display:none;">
-            <input type="hidden" name="reset" value="reset">
-            <input type="submit" class="hidden" id="reset-submit">
-        </form>
-        <label for="reset-submit"><div id="reset-btn" class="btn">Quit Game</div></label>
+            <form action="/" method="POST" class="hidden">
+                <input type="hidden" name="reset" value="reset">
+                <input type="submit" id="reset-submit">
+            </form>
+            <a href="/hangman"><div class="btn-gloss">RESUME</div></a>
+            <label for="reset-submit"><div id="reset-btn" class="btn-gloss">QUIT GAME</div></label>
         {{end}}
-    </div>
-    <div class="scoreboard">
-        {{ if and (eq .Player.Name "") (eq .GameData.FinalWord "") }}
-        <form action="/" method="POST">
-            <label for="username">USERNAME:
-                <input id="username" name="username" type="text">
-            </label>
-            <input type="submit" value="Log In">
-        </form>
-
-        {{ else }}
-        {{ template "scoreboard" .Player }}
-        {{ if eq .GameData.FinalWord ""}}
-        <form action="/" method="POST">
-            <input type="hidden" name="logout" value="logout">
-            <input type="submit" value="Log Out">
-        </form>
-        {{ end }}
-        {{ end }}
-    </div>
+        </div>
+    </section>
+    <div class="separator"></div>
+    <section class="section-right">
+        {{ template "scoreboard" . }}
+    </section>
+</main>
+<script src="assets/js/script.js"></script>
 </body>
 </html>

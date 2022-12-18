@@ -1,0 +1,157 @@
+:root {
+    --color-grey: #131313;
+    --color-beige: #ececec;
+    --stick-size: 4px;
+}
+
+.neon {
+    text-shadow:
+            0 0 7px #fff,
+            0 0 10px #fff,
+            0 0 21px #fff,
+            0 0 42px #0fa,
+            0 0 82px #0fa,
+            0 0 92px #0fa,
+            0 0 102px #0fa,
+            0 0 151px #0fa;
+}
+
+.section-art {
+    position: relative;
+    flex-grow: 1;
+    aspect-ratio: 1;
+}
+
+.section-art * {
+    position: absolute;
+}
+
+.gallows{
+    height: 90%;
+    width: 80%;
+    top: 5%;
+    left: 10%;
+}
+.jose {
+    height: 70%;
+    width: 20%;
+    top: 15%;
+    left: 25%;
+}
+.bg-drawn {
+    background-color: var(--color-beige);
+}
+
+#base {
+    height: var(--stick-size);
+    width: 100%;
+    left: 0;
+    bottom: 0;
+}
+
+.beams {
+    height: 100%;
+    width: 50%;
+    top: 0;
+    left: 31%;
+    overflow: clip;
+}
+#vertical-beam {
+    height: 100%;
+    width: var(--stick-size);
+    top: 0;
+    right: 0%;
+}
+#horizontal-beam {
+    height: var(--stick-size);
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+[attempts="6"] {
+    height: 100%;
+    width: 100%;
+}
+#rope {
+    top: 0%;
+    left: 0%;
+    height: 12%;
+    width: var(--stick-size);
+}
+
+#diagonal-beam {
+    top: -5%;
+    left: 75%;
+    height: 30%;
+    width: var(--stick-size);
+    transform: rotate(-45deg)
+}
+
+#head {
+    z-index: 2;
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background-color: var(--color-beige);
+    border: var(--stick-size) solid var(--color-beige);
+}
+
+#body {
+    top: 0%;
+    left: 50%;
+    height: 70%;
+    width: var(--stick-size);
+}
+
+.limbs {
+    width: calc(50% + var(--stick-size));
+    height: 65%;
+    top: 35%;
+    left: 0;
+    overflow: clip;
+}
+
+.limbs.right {
+    left: 50%;
+    transform: scaleX(-1);
+}
+
+.limbs > * {
+    height: 100%;
+    width: var(--stick-size);
+    right: 0;
+    transform: rotate(205deg);
+}
+
+#left-arm, #right-arm {
+    top: -50%;
+}
+#left-leg, #right-leg {
+    top: 5%;
+}
+
+[attempts] {
+    display: none;
+    visibility: hidden;
+    opacity: 0;
+}
+
+.visible {
+    display: block;
+    visibility: visible;
+    opacity: 1;
+}
+
+@media screen and (max-width: 500px) {
+    :root {
+        --stick-size: 2px;
+    }
+}
+@media screen and (min-width: 501px) and (max-width: 900px) {
+    :root {
+        --stick-size: 3px;
+    }
+}
+
