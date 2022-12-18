@@ -35,6 +35,7 @@ func indexHandler(w http.ResponseWriter, r *http.Request) {
 
 		} else if r.FormValue("username") != "" {
 			player.Login(r.FormValue("username"))
+			player.SetPlayerDifficulty(data.CurrentDifficulty)
 
 		} else if r.FormValue("logout") != "" {
 			player.Logout()

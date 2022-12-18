@@ -36,7 +36,6 @@ func (p *Player) InitDifficulty() {
 	p.ModeEasy.Name = "easy"
 	p.ModeMedium.Name = "medium"
 	p.ModeHard.Name = "hard"
-	p.CurrentDifficulty = &p.ModeMedium
 }
 
 func (p *Player) SetPlayerDifficulty(difficulty string) {
