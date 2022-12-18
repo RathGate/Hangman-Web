@@ -70,8 +70,7 @@ function checkRGB(value) {
 
 function getRGB(perc) {
     if (perc < 50) {
-        // If 40
-        var calc = checkRGB(Math.round(255 * ((50 - perc) * 2 / 100)))
+        var calc = checkRGB(Math.round(255 * (perc * 2 / 100)))
         return (`rgb(255, ${calc}, 0)`)
     } else if (perc > 50) {
         var calc = checkRGB(Math.round(255 - (255 * ((perc - 50) * 2 / 100))))
