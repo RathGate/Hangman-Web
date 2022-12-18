@@ -17,9 +17,9 @@
 }
 
 .section-art {
-    border: 2px solid darkcyan;
     position: relative;
     flex-grow: 1;
+    aspect-ratio: 1;
 }
 
 .section-art * {
@@ -154,3 +154,4 @@
         --stick-size: 3px;
     }
 }
+

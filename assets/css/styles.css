@@ -58,7 +58,7 @@ section  {
     height: 100%;
 }
 
-.section-left {
+.section-left, .section-game {
     width: 60%;
 }
 
@@ -94,16 +94,18 @@ input[type="text"] {
     color: white;
     position: relative;
     transition: .25s ease;
-    font-size: 16px;
+    font-size: 20px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     text-align: center;
     font-family: "Changa", sans-serif;
 }
 input[type="text"]:hover {
-    border-color: cyan;
+    filter: drop-shadow(0 0 15px #ff00ff);
+    border-color: #ff00ff;
 }
 input[type="text"]:focus-visible {
-    border-color: cyan;
+    filter: drop-shadow(0 0 15px #ff00ff);
+    border-color: #ff00ff;
 }
 input[type="text"]::placeholder {
     font-style: italic;
@@ -132,24 +134,134 @@ input[type="text"]::placeholder {
     letter-spacing: 2px;
 }
 
-.results {
-    display: flex;
-    height: 270px;
-    width: 375px;
-}
-
 .section-right input[type="submit"] {
     justify-content: flex-end;
 }
 
 .to-find {
-    font-size: 20px;
-    letter-spacing: 10px;
-    margin-bottom: 10px;
+    font-size: 35px;
+    letter-spacing: 5px;
 }
 
 .small-title {
     font-weight: bold;
+}
+
+.section-right input[type="text"] {
+    text-align: left;
+}
+
+.section-game {
+    z-index: 5;
+    padding-top: 10px;
+}
+.attempts, .difficulty {
+    font-size: 30px;
+}
+.difficulty {
+    margin-bottom: 15px;
+    font-family: "Hemi Head";
+}
+.used-letters-container {
+    font-size: 25px;
+    display: flex;
+    flex-direction: column;
+}
+.used-letters {
+    width: calc(100% - 30px);
+    margin: 5px 15px;
+    display: block;
+    width: fit-content;
+    position: relative;
+    padding: 2px 10px;
+}
+.decoration {
+    position: absolute;
+    content: "";
+    height: 10px;
+    width: 2px;
+    background-color: cyan;
+    filter: drop-shadow(0 0 15px cyan)
+}
+.decoration.up-left {
+    top: 0;
+    left: 0;
+}
+.decoration.down-right {
+    bottom: -2px;
+    right: -2px;
+}
+.decoration::after {
+    content: "";
+    position: absolute;
+    width: 10px;
+    height: 2px;
+    background-color: cyan;
+    filter: drop-shadow(0 0 15px cyan)
+}
+.decoration.up-left::after {
+    top: 0;
+    left: 0;
+}
+.decoration.down-right::after {
+    bottom: 0;
+    right: 0;
+}
+
+.idk {
+    opacity: .3;
+    font-size: 15px;
+    font-style: italic;
+}
+
+.enviederirmou {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 20px 0;
+    gap: 20px;
+}
+.game-form input[type="text"] {
+    margin-bottom: 10px;
+}
+
+.game .separation {
+    height: 100%;
+    width: 3px;
+    background-color: #ff00ff;
+    filter: drop-shadow(0 0 15px #ff00ff);
+    position: relative;
+}
+.game .separation::after {
+    content: "";
+    position: absolute;
+    right: -10px;
+    top: 0;
+    width: 3px;
+    height: 100%;
+    background: linear-gradient(0deg, transparent, #ff00ff);
+    filter: drop-shadow(0 0 15px #ff00ff) drop-shadow(0 0 50px #ff00ff);
+}
+
+.results p {
+    font-size: 20px;
+    margin: 0;
+    color: cyan;
+    filter: drop-shadow(0 0 15px cyan);
+    margin-bottom: 15px;
+}
+.results h1 {
+    margin-bottom: 0;
+}
+
+.game-data {
+    padding-top: 15px;
+}
+
+
+.section-art {
+    margin-left: 20px;
+    margin-right: -30px;
 }
 
 /* !RESPONSIVE */
@@ -180,18 +292,49 @@ input[type="text"]::placeholder {
     .scoreboard-data * {
         font-size: 17px;
     }
+    .difficulty {
+        margin-bottom: 10px;
+    }.attempts, .difficulty {
+        font-size: 25px;
+    }
+    .used-letters-container {
+        font-size: 22px;
+    }
+    .to-find {
+        font-size: 30px;
+    }
+    .difficulty-form form {
+        margin: 5px 0 0px;
+    }
+}
+
+.game h1 {
+    margin-bottom: 15px;
 }
 
 @media screen and (max-width: 1024px) {
     main {
-        margin: 100px 50px;
+        margin: auto;
         max-width: 600px;
         flex-direction: column;
+    }
+    main.game {
+        max-height: 100vh;
+        flex-direction: column-reverse;
+    }
+    .section-art {
+        width: 70%;
+        margin: auto auto auto auto;
+        aspect-ratio: 1;
+        height: auto;
     }
     h1 {
         margin-bottom: 30px;
     }
-    .section-left, .section-right {
+    .game h1:not(.results-title) {
+        display: none;
+    }
+    .section-left, .section-right, .section-game {
         width: 100%;
         height: fit-content;
     }
@@ -211,15 +354,60 @@ input[type="text"]::placeholder {
     main > .separator {
         height: 0px;
         width: 0px;
-        margin: 15px 0;
+        margin: 0;
+    }
+    main.game > .separation {
+        width: 100%;
+        height: 3px;
+        margin: 10px 0 15px;
+    }
+    main.game > .separation::after {
+        content: "";
+        position: absolute;
+        top: auto;
+        bottom: -10px;
+        left: 0;
+        height: 3px;
+        width: 100%;
+        background: linear-gradient(to left, transparent, #ff00ff);
+    }
+    .difficulty {
+        margin-bottom: 10px;
+    }.attempts, .difficulty {
+        font-size: 25px;
+    }
+    .used-letters-container {
+        font-size: 22px;
+    }
+    .to-find {
+        font-size: 30px;
+    }
+    .results p {
+        display: none;
+    }
+    .results-title {
+        color: cyan;
+        filter: drop-shadow(0 0 15px cyan);
+        font-size: 40px;
     }
 }
 
 @media screen and (max-width: 770px) {
     main {
-        margin: 50px;
+        margin: auto;
         flex-direction: column;
         max-width: 500px;
+    }
+    .difficulty {
+        margin-bottom: 10px;
+    }.attempts, .difficulty {
+        font-size: 20px;
+    }
+    .used-letters-container {
+        font-size: 20px;
+    }
+    .to-find {
+        font-size: 30px;
     }
 }
 
@@ -228,16 +416,18 @@ input[type="text"]::placeholder {
         margin: 5px;
         padding: 25px;
     }
+    main.game {
+        max-height: calc(100vh - 10px);
+    }
+    .section-game {
+        padding-top: 15px;
+    }
+    .enviederirmou {
+        padding-top: 30px;
+    }
+    h1.results-title {
+        font-size: 40px;
+    }
+
 }
 
-.section-right input[type="text"] {
-    text-align: left;
-}
-.section-right input[type="text"]:hover {
-    filter: drop-shadow(0 0 15px #ff00ff);
-    border-color: #ff00ff;
-}
-.section-right input[type="text"]:focus-visible {
-    filter: drop-shadow(0 0 15px #ff00ff);
-    border-color: #ff00ff;
-}
