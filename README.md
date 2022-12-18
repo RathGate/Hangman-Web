@@ -7,8 +7,6 @@ Authors are, once again, [Eva Chibane](https://github.com/evzs) and [Marianne Co
 
 ## About
 
-**Disclaimer:** This exercise must be submitted for notation before the **19th of December 2022**. As always, it is possible to see one or several commits after this date (notably if we discover issues in the code), but if any, they must not be taken into consideration by the examiner.
-
 The goal of the exercice is to provide a web interface for [this Hangman command-line game](https://github.com/RathGate/Hangman-Go), using all or at least most of the program we wrote beforehand. For clarity and functionality purposes, some functions have been slightly altered and the entire program has been cleared of all the "print" functions and CLI elements.
 
 ## Technical Specifications
